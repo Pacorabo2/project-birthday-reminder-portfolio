@@ -15,7 +15,7 @@ function App() {
     <section className="container">
       <h3>{people.length} Anniversaire(s) aujourd'hui</h3>
       <List people={people}/>
-      <button onClick={()=> console.log('click sur le bouton')}>Valider</button>
+      <button onClick={()=> setPeople([])}>Valider</button>
     </section>
   </main>
   
