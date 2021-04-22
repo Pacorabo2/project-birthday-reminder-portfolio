@@ -1,8 +1,10 @@
 // Functional import
 import React, { useState } from 'react'
-import data from './data'
+import data from '../../data'
 // Components import
-import List from './components/List'
+import List from '../List'
+import Cake from '../../../src/assets/cake.png'
+import Button from '../Button'
 
 function App() {
 
@@ -14,7 +16,9 @@ function App() {
       <section className="container">
         <h3>{people.lenght} birthday today</h3>
         <List people={people}/>
-        <button onClick={() => setPeople([])}>Vider la liste</button>
+        <Button/>
+        {/* <button onClick={() => setPeople([])}>Vider la liste</button> */}
+        {/* <img src={Cake} alt=""/> */}
       </section>
     </main>
     
