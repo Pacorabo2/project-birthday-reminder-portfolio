@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Header = () => {
+import './style.css'
+
+const Landing = () => {
   return (
-    <div>
-      Header
+    <div className="welcomePage">
+      Landing
     </div>
   )
 }
 
-export default Header
+export default Landing
