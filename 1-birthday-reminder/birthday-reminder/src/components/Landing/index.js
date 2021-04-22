@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import './style.css'
 
@@ -6,10 +7,10 @@ const Landing = () => {
   return (
     <div className="welcomePage">
       <div className="leftBox">
-        <a href="/" className="btn-welcome">Inscription</a>
+        <Link to="/signup" className="btn-welcome">Inscription</Link>
       </div>
       <div className="rightBox">
-        <a href="/" className="btn-welcome">Connexion</a>
+        <Link to="/login" className="btn-welcome">Connexion</Link>
       </div>
       
     </div>
