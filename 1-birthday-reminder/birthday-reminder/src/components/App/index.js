@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import data from '../../data'
 // Components import
 import List from '../List'
-import Cake from '../../../src/assets/cake.png'
 import Button from '../Button'
+import Header from '../Header'
+// Esthetical imports
+import Cake from '../../../src/assets/cake.png'
 
 function App() {
 
@@ -13,11 +15,15 @@ function App() {
   
   return (
     <main>
+      <section className="head-section">
+        <Header/>
+      </section>
       <section className="container">
+        
         <h3>{people.lenght} birthday today</h3>
         <List people={people}/>
         <Button/>
-        {/* <button onClick={() => setPeople([])}>Vider la liste</button> */}
+        <button onClick={() => setPeople([])}>Vider la liste</button>
         {/* <img src={Cake} alt=""/> */}
       </section>
     </main>
