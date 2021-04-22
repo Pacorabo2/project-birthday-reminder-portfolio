@@ -6,12 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import Firebase, { FirebaseContext } from './components/Firebase'
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new Firebase()}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <FirebaseContext.Provider value={new Firebase()}>
       <App />
+    </FirebaseContext.Provider>
   </React.StrictMode>,
-    document.getElementById('root')
-  </FirebaseContext.Provider>
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
