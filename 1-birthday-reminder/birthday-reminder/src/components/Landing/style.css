@@ -1,0 +1,40 @@
+.welcomePage {
+  display: flex;
+  background-image: url(../../assets/cake.png);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  flex-direction: row;
+  width: 100vw;
+  height: 60vh;
+  align-items: center;
+}
+
+.leftBox {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightBox {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-welcome {
+  color: var(--clr-white);
+  display: block;
+  border-color: transparent;
+  background: var(--clr-primary-4);
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  padding: 0.5rem 0.8em;
+  letter-spacing: var(--spacing);
+  border-radius: var(--radius);
+  cursor: pointer;
+}

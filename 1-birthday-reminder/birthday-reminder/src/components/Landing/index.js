@@ -5,7 +5,13 @@ import './style.css'
 const Landing = () => {
   return (
     <div className="welcomePage">
-      Landing
+      <div className="leftBox">
+        <a href="/" className="btn-welcome">Inscription</a>
+      </div>
+      <div className="rightBox">
+        <a href="/" className="btn-welcome">Connexion</a>
+      </div>
+      
     </div>
   )
 }

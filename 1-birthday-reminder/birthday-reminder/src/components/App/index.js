@@ -11,11 +11,9 @@ function App() {
   
   return (
     <main>
-      <section className="head-section">
-        <Header/>
-        <Landing/>
-        <Footer/>
-      </section>
+      <Header/>
+      <Landing/>
+      <Footer/>
     </main>
     
   );
