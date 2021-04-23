@@ -1,9 +1,17 @@
 import React from 'react'
+import Button from '../Button'
+import data from '../../data'
 
-const index = ({ people }) => {
+import './style.css'
+
+const index = () => {
+
+  const prsn = data
+  
   return (
-    <>
-      {people.map((person) => {
+    <div className="container">
+    <h3>{}</h3>
+      {prsn.map((person) => {
         const { id, name, age, image } = person;
         return (
           <article key={id} className='person'>
@@ -12,10 +20,13 @@ const index = ({ people }) => {
               <h4>{name}</h4>
               <p>{age} years</p>
             </div>
+            
           </article>
+          
         );
       })}
-    </>
+      <Button/>
+    </div>
   )
 }
 
