@@ -6,7 +6,7 @@ import './style.css'
 const ForgetPassword = () => {
   return (
     <div className="container" id="forget">
-      <h2>Mot de passe oublié ?</h2>
+      <h2 id="titleForget">Mot de passe oublié ?</h2>
       <form>
         <div className="formContent">
           <div className="inputBox">

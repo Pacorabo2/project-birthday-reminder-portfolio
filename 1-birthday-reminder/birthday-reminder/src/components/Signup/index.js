@@ -6,7 +6,7 @@ import './style.css'
 const Signup = () => {
   return (
     <div className="container">
-      <h2>Connexion</h2>
+      <h2>Inscription</h2>
       <form>
         <div className="formContent">
           <div className="inputBox">
