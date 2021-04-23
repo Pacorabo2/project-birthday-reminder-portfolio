@@ -30,6 +30,7 @@
   color: var(--clr-white);
   display: block;
   border-color: transparent;
+  box-shadow: 3px 3px 3px var(--clr-grey-5);
   background: var(--clr-primary-4);
   text-transform: capitalize;
   font-size: 1.4rem;
