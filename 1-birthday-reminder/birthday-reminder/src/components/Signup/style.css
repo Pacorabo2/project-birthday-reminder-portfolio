@@ -1,0 +1,80 @@
+.container {
+  border: 1px solid black;
+  margin-top: 0.5em;
+  margin-bottom: 3em;
+}
+
+.formContent {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.formContent h2 {
+  margin: 0 0 50px 0;
+  padding: 0;
+  color: var(--clr-primary-6);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.formContent .inputBox {
+  position: relative;
+  height: 80px;
+}
+
+.formContent .inputBox input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 17px;
+  color: var(--clr-red-dark);
+  font-weight: bold;
+  margin-bottom: 30px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid var(--clr-grey-3);
+  outline: none;
+}
+
+.formContent .inputBox label {
+  color: var(--clr-grey-5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 17px;
+  pointer-events: none;
+  -webkit-transition: 0.2s ease-in;
+  -moz-transition: 0.2s ease-in;
+  -o-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.formContent .inputBox input:focus~label,
+.formContent .inputBox input:valid~label {
+  top: -30px;
+  left: 0;
+  color: var(--clr-grey-6);
+  font-size: 16px;
+  font-style: italic;
+}
+
+.linkContainer {
+  margin-top: 15px;
+  border-top: 1px dashed var(--clr-grey-6);
+  text-align: center;
+}
+
+.simpleLink a{
+  color: var(--clr-primary-6);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.simpleLink a:hover {
+  color: var(--clr-red-dark);
+}
+
+.btn {
+  margin-top: 0;
+}

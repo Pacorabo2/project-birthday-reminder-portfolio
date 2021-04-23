@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../Button'
 
 import './style.css'
 
@@ -6,8 +7,8 @@ const Signup = () => {
   return (
     <div className="container">
       <form>
-        <h2>Connexion</h2>
         <div className="formContent">
+          <h2>Connexion</h2>
           <div className="inputBox">
             <input type="text"/>
             <label htmlFor="email">Email</label>
@@ -16,10 +17,10 @@ const Signup = () => {
             <input type="text"/>
             <label htmlFor="password">Mot de passe</label>
           </div>
-          <button>Connexion</button>
+          <Button/>
           <div className="linkContainer">
-            <p><a href="/login">Nouveau sur Birthday App ? Inscrivez-vous maintenant.</a></p>
-            <p><a href="/forgetpassword">Mot de passe oublié? Récupérez-le ici.</a></p>
+            <p className="simpleLink"><a href="/login">Nouveau sur Birthday App ? Inscrivez-vous maintenant.</a></p>
+            <p className="simpleLink"><a href="/forgetpassword">Mot de passe oublié? Récupérez-le ici.</a></p>
           </div>
         </div>
       </form>
