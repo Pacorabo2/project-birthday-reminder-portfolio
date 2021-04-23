@@ -1,12 +1,12 @@
 import React from 'react'
-import Button from '../Button'
+import Button from "../Button"
 
 import './style.css'
 
-const Login = () => {
+const ForgetPassword = () => {
   return (
-    <div className="container">
-      <h2>Connexion</h2>
+    <div className="container" id="forget">
+      <h2>Mot de passe oublié ?</h2>
       <form>
         <div className="formContent">
           <div className="inputBox">
@@ -21,13 +21,10 @@ const Login = () => {
         </div>
       </form>
       <div className="linkContainer">
-        <p className="simpleLink"><a href="/login">Nouveau sur Birthday App ? Inscrivez-vous maintenant.</a></p>
-        <p className="simpleLink"><a href="/forgetpassword">Mot de passe oublié ?</a></p>
+        <p className="simpleLink"><a href="/signup">Retourner sur la page de connexion</a></p>
       </div>
     </div>
   )
 }
 
-export default Login
-
-
+export default ForgetPassword

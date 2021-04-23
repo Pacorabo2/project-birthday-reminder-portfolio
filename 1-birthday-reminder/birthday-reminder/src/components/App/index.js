@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // Components import
 import ErrorPage from '../ErrorPage'
 import Footer from '../Footer'
+import ForgetPassword from '../ForgetPassword'
 import Header from '../Header'
 import Landing from '../Landing'
 import List from '../List'
@@ -23,6 +24,7 @@ function App() {
         <Route path="/list" component={List}/>
         <Route path="/login" component={Login}/>
         <Route path="/signup" component={Signup}/>
+        <Route path="/forgetpassword" component={ForgetPassword}/>
         <Route component={ErrorPage}/>
       </Switch>
       
