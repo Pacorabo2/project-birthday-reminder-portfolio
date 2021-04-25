@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { FirebaseContext } from '../Firebase'
 import Button from '../Button'
 
 import './style.css'
 
 const Signup = () => {
 
+  const firebase = useContext(FirebaseContext)
+  console.log(firebase);
+
+  // Data definition
   const data = {
     pseudo: "",
     email: "",
@@ -12,18 +17,40 @@ const Signup = () => {
     confirmPassword: ""
   }
 
+  // State definition with data objet in it
   const [loginData, setLoginData] = useState(data)
+  // State définition for error
+  const [error, setError] = useState('')
 
-  const handleChange = (e) => {
+  // Event listener on inputs
+  const handleChange = e => {
     setLoginData({...loginData, [e.target.id]: e.target.value})
+  }
+
+  // Event listener on Valid form
+  const handleSubmit = e => {
+    e.preventDefault()
+    const { email, password } = loginData
+    firebase.signupUser(email, password)
+    .then(user => {
+      setLoginData({...data})
+    })
+    .catch(error => {
+      setError(error)
+      setLoginData({...data})
+    })
   }
 
   const { pseudo, email, password, confirmPassword } = loginData
 
+  // Error handler
+  const errorMsg = error !== '' && <span>{error.message}</span>
+
   return (
     <div className="container">
+      {errorMsg}
       <h2>Inscription</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="formContent">
           <div className="inputBox">
             <input onChange={handleChange} value={pseudo} type="text" id="pseudo" autoComplete="off" required />
@@ -41,7 +68,7 @@ const Signup = () => {
             <input onChange={handleChange} value={confirmPassword} type="password" id="confirmPassword" autoComplete="off" required />
             <label htmlFor="password">Confirmez le mot de Passe</label>
           </div>
-          <Button/>
+           <Button />
         </div>
       </form>
       <div className="linkContainer">
