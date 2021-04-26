@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { FirebaseContext } from '../Firebase'
 import Button from '../Button'
 
@@ -72,7 +73,7 @@ const Signup = () => {
         </div>
       </form>
       <div className="linkContainer">
-        <p className="simpleLink"><a href="/login">Déjà inscrit sur Birthday App ? Connectez-vous.</a></p>
+        <Link className="simpleLink" to="/login">Déjà inscrit sur Birthday App ? Connectez-vous.</Link>
       </div>
     </div>
   )
