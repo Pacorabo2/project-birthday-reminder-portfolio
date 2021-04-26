@@ -21,12 +21,14 @@ const Login = (props) => {
   const [error, setError] = useState('')
 
   const handleChange = e => {
+    setError('')
     setLoginData({...loginData, [e.target.id]: e.target.value})
     // console.log(e.target.value);
   }
 
   const handleSubmit = e => {
     e.preventDefault()
+    
     const { email, password } = loginData
     firebase.loginUser(email, password)
     .then( user => {
