@@ -5,10 +5,9 @@ import Button from '../Button'
 
 import './style.css'
 
-const Signup = () => {
+const Signup = (props) => {
 
   const firebase = useContext(FirebaseContext)
-  console.log(firebase);
 
   // Data definition
   const data = {
@@ -35,6 +34,8 @@ const Signup = () => {
     firebase.signupUser(email, password)
     .then(user => {
       setLoginData({...data})
+      // Redirect on "/list"
+      props.history.push('/list')
     })
     .catch(error => {
       setError(error)
