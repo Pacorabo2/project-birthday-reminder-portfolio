@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../Button'
+import { Link } from 'react-router-dom'
 
 import './style.css'
 
@@ -21,8 +22,9 @@ const Login = () => {
         </div>
       </form>
       <div className="linkContainer">
-        <p className="simpleLink"><a href="/login">Nouveau sur Birthday App ? Inscrivez-vous maintenant.</a></p>
-        <p className="simpleLink"><a href="/forgetpassword">Mot de passe oublié ?</a></p>
+        <Link to="/signup" className="simpleLink">Nouveau sur Birthday App ? Inscrivez-vous.</Link>
+        <br/>
+        <Link to="/forgetpassword" className="simpleLink">Mot de passe oublié ?</Link>
       </div>
     </div>
   )
