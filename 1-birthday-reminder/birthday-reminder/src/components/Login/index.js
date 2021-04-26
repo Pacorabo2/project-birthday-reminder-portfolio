@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { FirebaseContext } from '../Firebase'
 import Button from '../Button'
 import { Link } from 'react-router-dom'
 
 import './style.css'
 
-const Login = () => {
+const Login = (props) => {
+
+  // Firebase context
+  const firebase = useContext(FirebaseContext)
 
   // Data definition
   const data = {
@@ -16,9 +20,23 @@ const Login = () => {
   // State définition for error
   const [error, setError] = useState('')
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setLoginData({...loginData, [e.target.id]: e.target.value})
     // console.log(e.target.value);
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    const { email, password } = loginData
+    firebase.loginUser(email, password)
+    .then( user => {
+      setLoginData({...data})
+      props.history.push('/list')
+    })
+    .catch( error => {
+      setError(error)
+      setLoginData({...data})
+    })
   }
 
   const { email, password } = loginData
@@ -30,7 +48,7 @@ const Login = () => {
     <div className="container">
       {errorMsg}
       <h2>Connexion</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="formContent">
           <div className="inputBox">
             <input onChange={handleChange} type="email" id="email" value={email} autoComplete="off" required/>
