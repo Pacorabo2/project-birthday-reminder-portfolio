@@ -13,6 +13,8 @@ const Login = () => {
   }
 
   const [loginData, setLoginData] = useState(data)
+  // State définition for error
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     setLoginData({...loginData, [e.target.id]: e.target.value})
@@ -21,8 +23,12 @@ const Login = () => {
 
   const { email, password } = loginData
 
+  // Error handler
+  const errorMsg = error !== '' && <span>{error.message}</span>
+
   return (
     <div className="container">
+      {errorMsg}
       <h2>Connexion</h2>
       <form>
         <div className="formContent">
@@ -34,7 +40,7 @@ const Login = () => {
             <input onChange={handleChange} type="text" id="password" value={password} autoComplete="off" required/>
             <label htmlFor="password">Mot de passe</label>
           </div>
-          <Button/>
+          <Button />
         </div>
       </form>
       <div className="linkContainer">
