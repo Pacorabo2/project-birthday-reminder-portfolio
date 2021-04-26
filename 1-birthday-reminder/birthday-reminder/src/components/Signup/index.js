@@ -24,6 +24,7 @@ const Signup = (props) => {
 
   // Event listener on inputs
   const handleChange = e => {
+    setError('')
     setLoginData({...loginData, [e.target.id]: e.target.value})
   }
 
