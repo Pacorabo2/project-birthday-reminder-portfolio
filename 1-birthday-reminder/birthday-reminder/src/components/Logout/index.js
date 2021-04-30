@@ -1,9 +1,27 @@
-import React, { useState }from 'react'
+/* eslint-disable no-unused-expressions */
+import React, { useState, useEffect, useContext }from 'react'
+import { FirebaseContext } from '../Firebase'
 import'./style.css'
 
 const Logout = () => {
 
+  const firebase = useContext(FirebaseContext)
+
   const [checked, setChecked] = useState(false);
+
+  console.log(checked);
+
+  useEffect(() => {
+    if(checked) {
+      console.log("Déconnexion");
+      firebase.signoutUser
+      // signoutUser
+    }
+  }, [checked, firebase])
+
+  const handleChange = event => {
+    setChecked(event.target.checked)
+  }
 
   return (
     <div className="logoutContainer">
@@ -11,6 +29,7 @@ const Logout = () => {
         <input 
           type="checkbox"
           checked={checked}
+          onChange={handleChange}
         />
         <span className="slider round"></span>
       </label>
