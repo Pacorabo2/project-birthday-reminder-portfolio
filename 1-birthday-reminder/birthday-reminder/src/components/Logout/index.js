@@ -14,7 +14,7 @@ const Logout = () => {
   useEffect(() => {
     if(checked) {
       console.log("Déconnexion");
-      firebase.signoutUser
+      firebase.signoutUser()
       // signoutUser
     }
   }, [checked, firebase])
