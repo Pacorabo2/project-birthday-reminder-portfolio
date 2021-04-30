@@ -15,14 +15,7 @@ const List = props => {
   useEffect(() => {
 
     let listener = firebase.auth.onAuthStateChanged(user => {
-      if (user) {
-        setUserSession(user)
-        console.log("connecté");
-      } else {
-        props.history.push('/')
-        console.log("personne");
-      }
-      // user ? setUserSession(user) : props.history.push('/')
+       user ? setUserSession(user) : props.history.push('/')
     })
 
     return () => {
