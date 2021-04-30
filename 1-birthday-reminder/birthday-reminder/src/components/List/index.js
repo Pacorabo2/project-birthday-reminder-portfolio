@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 import Button from '../Button'
 import Logout from '../Logout'
 import data from '../../data'
 
 import './style.css'
 
-const index = () => {
+const List = () => {
+
+  const [userSession, setUserSession] = useState(null)
 
   const prsn = data
-  
-  return (
+
+  return userSession === null ? (
+    <Fragment>
+      <div className="loader"></div>
+      <p className="loaderText">Veuillez patienter</p>
+    </Fragment>
+  ) : (
     <>
     <Logout/>
     <div className="container">
@@ -34,4 +41,4 @@ const index = () => {
   )
 }
 
-export default index
+export default List
