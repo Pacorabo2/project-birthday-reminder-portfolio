@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../Button'
+import Logout from '../Logout'
 import data from '../../data'
 
 import './style.css'
@@ -9,6 +10,8 @@ const index = () => {
   const prsn = data
   
   return (
+    <>
+    <Logout/>
     <div className="container">
     <h3>{}</h3>
       {prsn.map((person) => {
@@ -27,6 +30,7 @@ const index = () => {
       })}
       <Button/>
     </div>
+    </>
   )
 }
 

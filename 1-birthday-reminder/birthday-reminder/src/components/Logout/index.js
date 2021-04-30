@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState }from 'react'
+import'./style.css'
 
 const Logout = () => {
+
+  const [checked, setChecked] = useState(false);
+
   return (
-    <div>
-      
+    <div className="logoutContainer">
+      <label className="switch">
+        <input 
+          type="checkbox"
+          checked={checked}
+        />
+        <span className="slider round"></span>
+      </label>
     </div>
   )
 }
