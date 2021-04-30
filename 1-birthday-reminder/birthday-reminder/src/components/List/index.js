@@ -1,15 +1,37 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
+import { FirebaseContext } from '../Firebase'
 import Button from '../Button'
 import Logout from '../Logout'
 import data from '../../data'
 
 import './style.css'
 
-const List = () => {
+const List = props => {
+
+  const firebase = useContext(FirebaseContext)
 
   const [userSession, setUserSession] = useState(null)
 
+  useEffect(() => {
+
+    let listener = firebase.auth.onAuthStateChanged(user => {
+      if (user) {
+        setUserSession(user)
+        console.log("connecté");
+      } else {
+        props.history.push('/')
+        console.log("personne");
+      }
+      // user ? setUserSession(user) : props.history.push('/')
+    })
+
+    return () => {
+      listener()
+    }
+  },)
+
   const prsn = data
+
 
   return userSession === null ? (
     <Fragment>
