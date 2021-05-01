@@ -1,5 +1,6 @@
 import app from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/firestore'
 
 const config = {
   apiKey: "AIzaSyB0Ve-ntaidOXZfK7eP5WpD5OUqM_x8FMo",
@@ -14,6 +15,7 @@ class Firebase {
   constructor() {
     app.initializeApp(config)
     this.auth = app.auth()
+    this.db = app.firestore()
   }
 
   // Inscritpion method
@@ -29,6 +31,9 @@ class Firebase {
 
   // Get forget password
   passwordReset = email => this.auth.sendPasswordResetEmail(email)
+
+  // Get user id in database
+  user = uid => this.db.doc(`users/${uid}`)
   
 
 }
