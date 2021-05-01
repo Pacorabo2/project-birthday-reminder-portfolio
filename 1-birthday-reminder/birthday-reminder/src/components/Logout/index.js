@@ -3,17 +3,14 @@ import React, { useState, useEffect, useContext }from 'react'
 import { FirebaseContext } from '../Firebase'
 import'./style.css'
 
-const Logout = () => {
+const Logout = (props) => {
 
   const firebase = useContext(FirebaseContext)
 
   const [checked, setChecked] = useState(false);
 
-  console.log(checked);
-
   useEffect(() => {
     if(checked) {
-      console.log("Déconnexion");
       firebase.signoutUser()
       // signoutUser
     }
@@ -25,12 +22,15 @@ const Logout = () => {
 
   return (
     <div className="logoutContainer">
+      <p className="pseudoContainer">Bienvenue {props.userData.pseudo} !</p>
       <label className="switch">
+      
         <input 
           type="checkbox"
           checked={checked}
           onChange={handleChange}
         />
+        
         <span className="slider round"></span>
       </label>
     </div>
