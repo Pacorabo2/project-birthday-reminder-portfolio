@@ -27,6 +27,10 @@ class Firebase {
   // Disconect method
   signoutUser = () => this.auth.signOut()
 
+  // Get forget password
+  passwordReset = email => this.auth.sendPasswordResetEmail(email)
+  
+
 }
 
 

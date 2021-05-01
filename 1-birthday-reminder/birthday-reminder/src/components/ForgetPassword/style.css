@@ -12,3 +12,11 @@
   width: 60%;
   outline: none;
 }
+
+.successMsg {
+  color: var(--clr-primary-7);
+}
+
+.errorMsg {
+  color: var(--clr-red-dark);
+}
