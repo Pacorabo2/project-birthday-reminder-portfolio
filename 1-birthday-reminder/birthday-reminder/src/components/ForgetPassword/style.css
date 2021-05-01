@@ -4,9 +4,11 @@
 
 #forget {
   height: 60vh;
+  height: auto;
   border: 1px solid black;
 }
 
 .btn {
   width: 60%;
+  outline: none;
 }

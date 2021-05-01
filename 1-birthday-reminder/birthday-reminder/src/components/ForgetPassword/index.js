@@ -13,10 +13,6 @@ const ForgetPassword = () => {
             <input type="email" autoComplete="off" required/>
             <label htmlFor="email">Email</label>
           </div>
-          <div className="inputBox">
-            <input type="text" autoComplete="off" required/>
-            <label htmlFor="password">Mot de passe</label>
-          </div>
           <Button/>
         </div>
       </form>
