@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { FirebaseContext } from '../Firebase'
+// import "firebase/storage"
 
 import './style.css'
 
@@ -19,6 +20,13 @@ const Create = () => {
   setLastName('')
   setBirthDate('')
   setProfilePict([])
+  }
+
+  const onFileChange = e => {
+    // Get file added
+    const file = e.target.files[0]
+    // pass file to handleFile
+    firebase.handleFile(file)
   }
 
   return (
@@ -44,7 +52,7 @@ const Create = () => {
           type="file"
           placeholder="Photo de profil"
           value={profilePict}
-          onChange={e => setProfilePict(e.target.value)}/>
+          onChange={onFileChange}/>
           <button
            onClick={createFriend}>Ajouter</button>
       </div>

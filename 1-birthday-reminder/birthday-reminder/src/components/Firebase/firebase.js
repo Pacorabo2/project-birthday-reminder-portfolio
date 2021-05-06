@@ -1,6 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 const config = {
   apiKey: "AIzaSyB0Ve-ntaidOXZfK7eP5WpD5OUqM_x8FMo",
@@ -16,6 +17,7 @@ class Firebase {
     app.initializeApp(config)
     this.auth = app.auth()
     this.db = app.firestore()
+    this.storage = app.storage()
   }
 
   // Inscritpion method
@@ -69,6 +71,17 @@ class Firebase {
         console.log(doc.data())
       })
     })
+  }
+
+  handleFile = (file) => {
+    console.log(file.name);
+    console.log("fichier reçu dans handleFile()");
+    const storageRef = this.storage.ref()
+    const fileRef = storageRef.child(file.name)
+    fileRef.put(file).then(() => {
+      console.log("Photo téléchargée avec succès", file.name)
+    })
+
   }
 }
 
