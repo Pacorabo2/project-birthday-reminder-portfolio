@@ -37,7 +37,7 @@ class Firebase {
   user = uid => this.db.doc(`users/${uid}`)
   
   // Add friend
-  addFriend = (firstName, lastName, birthDate ) => {
+  addFriend = (firstName, lastName, birthDate, profilePict ) => {
 
     /** On récupère l'objet en rapport avec l'utilisateur il contient toutes
      * les informations nécessaires comme, le token, l'email, l'uid, etc
@@ -52,7 +52,7 @@ class Firebase {
     console.log(userLogged);
 
     this.db.collection('users').doc(userLogged)
-      .collection('friends').doc(document.id).set({ firstName, lastName, birthDate })
+      .collection('friends').doc(document.id).set({ firstName, lastName, birthDate, profilePict })
 
       console.log("friend added");
   }

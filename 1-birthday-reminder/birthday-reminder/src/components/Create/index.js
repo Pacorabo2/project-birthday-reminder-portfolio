@@ -11,10 +11,14 @@ const Create = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [birthDate, setBirthDate] = useState('')
+  const [profilePict , setProfilePict] = useState([])
 
   const createFriend = () => {
-  firebase.addFriend(firstName,lastName,birthDate)
-  
+  firebase.addFriend(firstName, lastName, birthDate, profilePict)
+  setFirstName('')
+  setLastName('')
+  setBirthDate('')
+  setProfilePict([])
   }
 
   return (
@@ -36,6 +40,11 @@ const Create = () => {
           placeholder="Date d'anniversaire"
           value={birthDate}
           onChange={e => setBirthDate(e.target.value)}/>
+        <input 
+          type="file"
+          placeholder="Photo de profil"
+          value={profilePict}
+          onChange={e => setProfilePict(e.target.value)}/>
           <button
            onClick={createFriend}>Ajouter</button>
       </div>
