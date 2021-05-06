@@ -2,11 +2,13 @@ import React, { Fragment, useState, useContext, useEffect } from 'react'
 import { FirebaseContext } from '../Firebase'
 import Button from '../Button'
 import Logout from '../Logout'
+import Create from '../Create'
 import data from '../../data'
 
 import './style.css'
 
 const List = props => {
+
 
   const firebase = useContext(FirebaseContext)
 
@@ -49,6 +51,7 @@ const List = props => {
   ) : (
     <>
     <Logout userData={userData} />
+    <Create />
     <div className="container">
     <h3>{}</h3>
       {prsn.map((person) => {

@@ -2,6 +2,7 @@
 .logoutContainer {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   margin-bottom: 30px;
   margin-right: 2em;
 }
@@ -59,5 +60,23 @@ input:checked+.slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.pseudoContainer {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: white;
+  margin-right: 2em;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.pseudoContainer:first-child {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: white;
+  margin-right: 2em;
+  font-size: 1.7rem;
+  font-weight: 600;
 }
 /* END LOGOUT SWITCH */
