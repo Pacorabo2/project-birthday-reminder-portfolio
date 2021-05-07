@@ -41,15 +41,6 @@ class Firebase {
   // Add friend
   addFriend = (firstName, lastName, birthDate, fileUrl ) => {
 
-    /** On récupère l'objet en rapport avec l'utilisateur il contient toutes
-     * les informations nécessaires comme, le token, l'email, l'uid, etc
-     * il servira surement plus d'une fois
-     */
-    // let userLogged = this.auth.currentUser
-
-    /** On isole l'id de notre utilisateur qu'on vient enrigistrer dans
-     * une variable
-     */
     let userLogged = this.auth.currentUser.uid
 
     this.db.collection('users').doc(userLogged)
@@ -71,30 +62,6 @@ class Firebase {
     })
   }
 
-  // handleFile = (file) => {
-  //   console.log(file.name);
-  //   console.log("fichier reçu dans handleFile()");
-  //   const storageRef = this.storage.ref()
-  //   const fileRef = storageRef.child(file.name)
-  //   fileRef.put(file).then(() => {
-  //     console.log("Photo téléchargée avec succès", file.name)
-  //   })
-
-  // }
-
-  // handleFile = async (file) => {
-
-  //   console.log(file.name);
-  //   console.log("fichier reçu dans handleFile()");
-  //   const storageRef = this.storage.ref()
-  //   const fileRef = storageRef.child(file.name)
-  //   await fileRef.put(file)
-  //   const fileUrl = await fileRef.getDownloadURL()
-  //   .then(url => {
-  //     console.log(url)
-  //   })
-
-  // }
 }
 
 

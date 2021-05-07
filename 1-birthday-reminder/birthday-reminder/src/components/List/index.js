@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react'
 import { FirebaseContext } from '../Firebase'
+import app from 'firebase/app'
+import 'firebase/auth'
 import Button from '../Button'
 import Logout from '../Logout'
 import Create from '../Create'
@@ -9,12 +11,28 @@ import './style.css'
 
 const List = props => {
 
-
   const firebase = useContext(FirebaseContext)
 
+  
   const [userSession, setUserSession] = useState(null)
-
   const [userData, setUserData] = useState({})
+  const [friends, setFriends] = useState([])
+
+  useEffect(() => {
+    app
+     .firestore()
+     .collection('users')
+     .doc('aCEBDLPD7cbZfFBnbxNnUqmarsE3')
+     .collection("friends")
+     .onSnapshot((snapshot) => {
+       const newFriends = snapshot.docs.map((doc) => ({
+         id: doc.id,
+         ...doc.data()
+       }))
+
+       setFriends(newFriends)
+     })
+  }, [])
 
   useEffect(() => {
 
@@ -40,6 +58,8 @@ const List = props => {
     }
   },[userSession])
 
+  
+
   const prsn = data
 
 
@@ -54,14 +74,14 @@ const List = props => {
     <Create />
     <div className="container">
     <h3>{}</h3>
-      {prsn.map((person) => {
-        const { id, name, age, image } = person;
+      {friends.map((friend) => {
+        const { id, firstName, lastName, birthDate, fileUrl } = friend;
         return (
           <article key={id} className='person'>
-            <img src={image} alt={name} />
+            <img src={fileUrl} alt={firstName} />
             <div>
-              <h4>{name}</h4>
-              <p>{age} years</p>
+              <h4>{firstName + lastName}</h4>
+              <p>{birthDate} years</p>
             </div>
           </article>
           

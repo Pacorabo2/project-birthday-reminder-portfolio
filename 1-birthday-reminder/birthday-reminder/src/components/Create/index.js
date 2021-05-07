@@ -8,7 +8,6 @@ const Create = () => {
 
   const firebase = useContext(FirebaseContext)
 
-  // const db = app.firestore()
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
