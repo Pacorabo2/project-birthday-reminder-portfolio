@@ -13,7 +13,9 @@ const List = props => {
 
   const firebase = useContext(FirebaseContext)
 
+  const userAuth = firebase.auth.X
   
+
   const [userSession, setUserSession] = useState(null)
   const [userData, setUserData] = useState({})
   const [friends, setFriends] = useState([])
@@ -22,7 +24,7 @@ const List = props => {
     app
      .firestore()
      .collection('users')
-     .doc('aCEBDLPD7cbZfFBnbxNnUqmarsE3')
+     .doc(userAuth)
      .collection("friends")
      .onSnapshot((snapshot) => {
        const newFriends = snapshot.docs.map((doc) => ({
