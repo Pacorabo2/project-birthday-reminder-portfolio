@@ -12,14 +12,15 @@ import './style.css'
 const List = props => {
 
   const firebase = useContext(FirebaseContext)
-
-  const userAuth = firebase.auth.X
   
-
+  // Get user from firebase
+  const userAuth = firebase.auth.X
+  // tate definition
   const [userSession, setUserSession] = useState(null)
   const [userData, setUserData] = useState({})
   const [friends, setFriends] = useState([])
 
+  // To get friends from firebase acount
   useEffect(() => {
     app
      .firestore()
@@ -36,6 +37,7 @@ const List = props => {
      })
   }, [])
 
+  // To look if user is connected
   useEffect(() => {
 
     let listener = firebase.auth.onAuthStateChanged(user => {
@@ -60,10 +62,6 @@ const List = props => {
     }
   },[userSession])
 
-  
-
-  const prsn = data
-
 
   return userSession === null ? (
     <Fragment>
@@ -82,7 +80,7 @@ const List = props => {
           <article key={id} className='person'>
             <img src={fileUrl} alt={firstName} />
             <div>
-              <h4>{firstName + lastName}</h4>
+              <h4>{firstName + ' ' +lastName}</h4>
               <p>{birthDate} years</p>
             </div>
           </article>
