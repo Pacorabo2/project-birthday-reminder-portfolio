@@ -39,7 +39,7 @@ class Firebase {
   user = uid => this.db.doc(`users/${uid}`)
   
   // Add friend
-  addFriend = (firstName, lastName, birthDate, profilePict ) => {
+  addFriend = (firstName, lastName, birthDate, fileUrl ) => {
 
     /** On récupère l'objet en rapport avec l'utilisateur il contient toutes
      * les informations nécessaires comme, le token, l'email, l'uid, etc
@@ -51,10 +51,9 @@ class Firebase {
      * une variable
      */
     let userLogged = this.auth.currentUser.uid
-    console.log(userLogged);
 
     this.db.collection('users').doc(userLogged)
-      .collection('friends').doc(document.id).set({ firstName, lastName, birthDate, profilePict })
+      .collection('friends').doc(document.id).set({ firstName, lastName, birthDate, fileUrl })
 
       console.log("friend added");
   }
@@ -63,7 +62,6 @@ class Firebase {
   getAllFriends = () => {
 
     let userLogged = this.auth.currentUser.uid
-    console.log(userLogged);
     /** ---------------------------- Affiche en console chaque id de chaque document ---------- */
     this.db.collection('users').doc(userLogged).collection('friends').get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
@@ -73,16 +71,30 @@ class Firebase {
     })
   }
 
-  handleFile = (file) => {
-    console.log(file.name);
-    console.log("fichier reçu dans handleFile()");
-    const storageRef = this.storage.ref()
-    const fileRef = storageRef.child(file.name)
-    fileRef.put(file).then(() => {
-      console.log("Photo téléchargée avec succès", file.name)
-    })
+  // handleFile = (file) => {
+  //   console.log(file.name);
+  //   console.log("fichier reçu dans handleFile()");
+  //   const storageRef = this.storage.ref()
+  //   const fileRef = storageRef.child(file.name)
+  //   fileRef.put(file).then(() => {
+  //     console.log("Photo téléchargée avec succès", file.name)
+  //   })
 
-  }
+  // }
+
+  // handleFile = async (file) => {
+
+  //   console.log(file.name);
+  //   console.log("fichier reçu dans handleFile()");
+  //   const storageRef = this.storage.ref()
+  //   const fileRef = storageRef.child(file.name)
+  //   await fileRef.put(file)
+  //   const fileUrl = await fileRef.getDownloadURL()
+  //   .then(url => {
+  //     console.log(url)
+  //   })
+
+  // }
 }
 
 

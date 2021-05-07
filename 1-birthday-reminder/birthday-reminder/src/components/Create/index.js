@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
-import { FirebaseContext } from '../Firebase'
-// import "firebase/storage"
+import  { FirebaseContext } from '../Firebase'
+import 'firebase/firestore'
 
 import './style.css'
 
@@ -8,26 +8,36 @@ const Create = () => {
 
   const firebase = useContext(FirebaseContext)
 
-  // const [friend, setFriend] = useState([])
+  // const db = app.firestore()
+
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [birthDate, setBirthDate] = useState('')
-  const [profilePict , setProfilePict] = useState([])
+  const [profilePict , setProfilePict] = useState('')
+  const [fileUrl , setFileUrl] = useState(null)
 
+  // ---------------- Fonction d'origine sans await ------------
   const createFriend = () => {
-  firebase.addFriend(firstName, lastName, birthDate, profilePict)
-  setFirstName('')
-  setLastName('')
-  setBirthDate('')
-  setProfilePict([])
+    firebase.addFriend(firstName, lastName, birthDate, fileUrl)
+    setFirstName('')
+    setLastName('')
+    setBirthDate('')
+    setProfilePict('')
   }
 
-  const onFileChange = e => {
-    // Get file added
+  
+
+  const onFileChange = async (e) => {
     const file = e.target.files[0]
-    // pass file to handleFile
-    firebase.handleFile(file)
+    console.log(file);
+    const storageRef = firebase.storage.ref()
+    const fileRef = storageRef.child(file.name)
+    await fileRef.put(file)
+    setFileUrl(await fileRef.getDownloadURL())
+    console.log(fileUrl);
   }
+  
+  
 
   return (
     <div className="create">
