@@ -6,7 +6,6 @@ import Button from '../Button'
 import Logout from '../Logout'
 import Create from '../Create'
 import Modal from '../Modal'
-import data from '../../data'
 
 import './style.css'
 
@@ -36,7 +35,7 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  }, [])
+  }, [friends])
 
   // To look if user is connected
   useEffect(() => {
@@ -78,8 +77,11 @@ const List = props => {
     <Logout userData={userData} />
     <Modal/>
     <Create />
+    {/* <Button
+      buttonSize="btn--small"
+      >Ajouter</Button> */}
     <div className="container">
-    <h3>{}</h3>
+    <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
       {friends.map((friend) => {
         const { id, firstName, lastName, birthDate, fileUrl } = friend;
         return (
@@ -90,10 +92,9 @@ const List = props => {
               <p>{birthDate} years</p>
             </div>
           </article>
-          
         );
       })}
-      <Button onClick={showModal}/>
+      <Button>Ajouter un Anniversaire</Button>
     </div>
     </>
   )

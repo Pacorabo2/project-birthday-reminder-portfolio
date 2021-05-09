@@ -1,15 +1,89 @@
+:root {
+  --primary: #4628ff;
+  --warning: #ffd028;
+  --danger: #eb3f27;
+  --success: #75fa83;
+  --white: #fdfdfd;
+  --dark: #181717;
+}
+
 .btn {
-  color: var(--clr-white);
-  display: block;
-  width: 100%;
-  border-color: transparent;
-  background: var(--clr-pink);
-  margin: 2rem auto 0 auto;
-  text-transform: capitalize;
-  font-size: 1.2rem;
-  padding: 0.5rem 0;
-  letter-spacing: var(--spacing);
-  border-radius: var(--radius);
-  outline: 1px solid rgba(242, 138, 178, 0.8);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  border-radius: 10px;
   cursor: pointer;
+  transition: transform 0.3s ease;
+  border: 3px solid red;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* ----------- Button Colors and Styles --------------*/
+
+.btn--primary--solid {
+  background-color: var(--primary);
+  color: var(--white);
+  /* border: none; */
+}
+
+.btn--warning--solid {
+  background-color: var(--warning);
+  color: var(--white);
+  border: none;
+}
+
+.btn--danger--solid {
+  background-color: var(--danger);
+  color: var(--white);
+  border: none;
+}
+
+.btn--success--solid {
+  background-color: var(--success);
+  color: var(--white);
+  border: none;
+}
+
+.btn--primary--outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn--warning--outline {
+  background-color: transparent;
+  color: var(--warning);
+  border: 2px solid var(--warning);
+}
+
+.btn--danger--outline {
+  background-color: transparent;
+  color: var(--danger);
+  border: 2px solid var(--danger);
+}
+
+.btn--success--outline {
+  background-color: transparent;
+  color: var(--success);
+  border: 2px solid var(--success);
+}
+
+/* --------- Button Sizes ------------ */
+
+.btn--small {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+
+.btn--medium {
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.btn--large {
+  padding: 15px 30px;
+  font-size: 20px;
 }

@@ -1,9 +1,15 @@
-/* LOADER */
-
 .container {
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
 }
+.container h3 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* LOADER */
 
 .loader {
   border: 10px solid var(--clr-primary-5);
