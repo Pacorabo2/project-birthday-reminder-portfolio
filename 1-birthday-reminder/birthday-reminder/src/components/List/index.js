@@ -5,6 +5,7 @@ import 'firebase/auth'
 import Button from '../Button'
 import Logout from '../Logout'
 import Create from '../Create'
+import Modal from '../Modal'
 import data from '../../data'
 
 import './style.css'
@@ -62,6 +63,10 @@ const List = props => {
     }
   },[userSession])
 
+  const showModal = (e) => {
+    console.log(e.target)
+  }
+
 
   return userSession === null ? (
     <Fragment>
@@ -71,6 +76,7 @@ const List = props => {
   ) : (
     <>
     <Logout userData={userData} />
+    <Modal/>
     <Create />
     <div className="container">
     <h3>{}</h3>
@@ -87,7 +93,7 @@ const List = props => {
           
         );
       })}
-      <Button/>
+      <Button onClick={showModal}/>
     </div>
     </>
   )
