@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Button from '../Button'
 
-const Modal = () => {
+import './style.css'
+
+const Modal = ({showModal, setShowModal, children}) => {
+
+  const [closeModal, setCloseModal] = useState(false)
+
+  const hideModal = e => {
+    console.log('hide');
+    setCloseModal(!closeModal)
+    console.log(closeModal);
+  }
+
   return (
-    <div>
-      Modal
-    </div>
+    showModal && (
+      <div className="modalBackground">
+        {children}
+      </div>
+    )
   )
 }
 

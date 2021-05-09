@@ -1,12 +1,23 @@
 .container {
   margin-left: auto;
   margin-right: auto;
+  /* height: 60vh; */
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .container h3 {
   font-size: 1.2rem;
+  font-weight: bold;
   text-align: center;
+  margin-bottom: 2em;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* LOADER */
@@ -47,3 +58,11 @@
   }
 }
 /* END LOADER */
+
+.close {
+  cursor: pointer;
+  position: relative;
+  left: 50%;
+  font-weight: bold;
+  font-size: 1.2rem;
+}

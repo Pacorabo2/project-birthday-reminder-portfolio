@@ -19,6 +19,9 @@ const List = props => {
   const [userSession, setUserSession] = useState(null)
   const [userData, setUserData] = useState({})
   const [friends, setFriends] = useState([])
+  const [showModal, setShowModal] = useState(false)
+
+  
 
   // To get friends from firebase acount
   useEffect(() => {
@@ -35,7 +38,7 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  }, [friends])
+  }, [])
 
   // To look if user is connected
   useEffect(() => {
@@ -62,24 +65,41 @@ const List = props => {
     }
   },[userSession])
 
-  const showModal = (e) => {
-    console.log(e.target)
+  // To open Modal
+  const openModal = e => {
+    console.log('show');
+    setShowModal(prev => !prev)
+    console.log(showModal);
   }
 
+  // To open Modal
+  const closeModal = e => {
+    console.log('show');
+    setShowModal(prev => !prev)
+    console.log(showModal);
+  }
 
-  return userSession === null ? (
-    <Fragment>
-      <div className="loader"></div>
-      <p className="loaderText">Veuillez patienter</p>
-    </Fragment>
-  ) : (
+  
+
+
+  // return userSession === null ? (
+  //   <Fragment>
+  //     <div className="loader"></div>
+  //     <p className="loaderText">Veuillez patienter</p>
+  //   </Fragment>
+  // ) : (
+    return showModal === true ? (
+      <Modal showModal={showModal} setShowModal={setShowModal} >
+      <div className="container">
+        <p className="close" onClick={closeModal}>X</p>
+      <Create />
+      </div>
+    </Modal>
+    ) : (
     <>
     <Logout userData={userData} />
-    <Modal/>
-    <Create />
-    {/* <Button
-      buttonSize="btn--small"
-      >Ajouter</Button> */}
+    
+    {/* <Create /> */}
     <div className="container">
     <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
       {friends.map((friend) => {
@@ -94,7 +114,15 @@ const List = props => {
           </article>
         );
       })}
-      <Button>Ajouter un Anniversaire</Button>
+      <div className="footer">
+        <Button type="button"
+          buttonStyle="btn--primary--outline"
+          buttonSize="btn--medium"
+          onClick={openModal}
+          >
+            Ajouter un Anniversaire
+        </Button>
+      </div>
     </div>
     </>
   )

@@ -1,18 +1,23 @@
 .create {
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.create h4 {
+  color: var(--clr-violet-light);
+  font-size: 1.4rem;
+}
+
 .form {
   display: flex;
-  width: 80%;
-  background-color: white;
+  flex-direction: column;
+  width: 100%;
+  padding: 1em 1em;
   border-radius: 5px;
-  text-align: center;
-  align-items: center;
-  height: 3rem;
+  height: auto;
 }
 
 .form input {
@@ -26,5 +31,5 @@
   font-size: 1.4rem;
   color: white;
   padding: 0.3rem 0.3rem;
-  margin-right: 0.4rem;
+  margin: 1.5em 0;
 }
