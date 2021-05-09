@@ -35,7 +35,7 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  }, [friends])
+  }, [])
 
   // To look if user is connected
   useEffect(() => {
@@ -94,8 +94,16 @@ const List = props => {
           </article>
         );
       })}
-      <Button>Ajouter un Anniversaire</Button>
+      <div className="footer">
+        <Button type="button"
+          buttonStyle="btn--primary--outline"
+          buttonSize="btn--medium"
+          >
+            Ajouter un Anniversaire
+        </Button>
+      </div>
     </div>
+    
     </>
   )
 }

@@ -13,7 +13,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  border: 3px solid red;
+  border: none;
 }
 
 .btn:hover {
@@ -73,13 +73,13 @@
 /* --------- Button Sizes ------------ */
 
 .btn--small {
-  padding: 5px 10px;
-  font-size: 12px;
+  padding: 10px 10px;
+  font-size: 14px;
 }
 
 
 .btn--medium {
-  padding: 10px 20px;
+  padding: 8px 15px;
   font-size: 18px;
 }
 
