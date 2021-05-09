@@ -78,16 +78,6 @@ const List = props => {
     setShowModal(prev => !prev)
     console.log(showModal);
   }
-
-  
-
-
-  // return userSession === null ? (
-  //   <Fragment>
-  //     <div className="loader"></div>
-  //     <p className="loaderText">Veuillez patienter</p>
-  //   </Fragment>
-  // ) : (
     return showModal === true ? (
       <Modal showModal={showModal} setShowModal={setShowModal} >
       <div className="container">
@@ -124,6 +114,7 @@ const List = props => {
         </Button>
       </div>
     </div>
+    
     </>
   )
 }
