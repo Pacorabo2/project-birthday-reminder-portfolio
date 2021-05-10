@@ -7,6 +7,8 @@ import Logout from '../Logout'
 import Create from '../Create'
 import Modal from '../Modal'
 
+import { RiPencilLine } from 'react-icons/ri'
+import { RiDeleteBin2Line } from 'react-icons/ri'
 import './style.css'
 
 const List = props => {
@@ -88,8 +90,6 @@ const List = props => {
     ) : (
     <>
     <Logout userData={userData} />
-    
-    {/* <Create /> */}
     <div className="container">
     <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
       {friends.map((friend) => {
@@ -100,6 +100,10 @@ const List = props => {
             <div>
               <h4>{firstName + ' ' +lastName}</h4>
               <p>{birthDate} years</p>
+            </div>
+            <div className="person__icons">
+              <button href="#"><RiPencilLine/></button>
+              <button href="#"><RiDeleteBin2Line/></button>
             </div>
           </article>
         );

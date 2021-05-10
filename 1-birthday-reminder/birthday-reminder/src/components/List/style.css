@@ -1,7 +1,6 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  /* height: 60vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +11,31 @@
   font-weight: bold;
   text-align: center;
   margin-bottom: 2em;
+}
+
+.person {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.person__icons {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.person__icons button{
+  border: none;
+  background: none;
+  margin-left: 2em;
+  padding: 0 0.5em;
+  color: var(--clr-grey-4);
+  font-size: 1.5rem;
+}
+
+.person__icons button:last-child{
+  color: var(--clr-red-light);
 }
 
 .footer {
