@@ -40,7 +40,7 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  }, [])
+  }, [friends])
 
   // To look if user is connected
   useEffect(() => {
@@ -81,12 +81,12 @@ const List = props => {
     console.log(showModal);
   }
     return showModal === true ? (
-      <Modal showModal={showModal} setShowModal={setShowModal} >
-      <div className="container">
-        <p className="close" onClick={closeModal}>X</p>
-      <Create />
-      </div>
-    </Modal>
+      <Modal showModal={showModal}  >
+        <div className="container">
+          <p className="close" onClick={closeModal}>X</p>
+          <Create />
+        </div>
+      </Modal>
     ) : (
     <>
     <Logout userData={userData} />
@@ -96,12 +96,14 @@ const List = props => {
         const { id, firstName, lastName, birthDate, fileUrl } = friend;
         return (
           <article key={id} className='person'>
-            <img src={fileUrl} alt={firstName} />
-            <div>
+            <div className="personDetails avatar">
+              <img src={fileUrl} alt={firstName} />
+            </div>
+            <div className="personDetails infos">
               <h4>{firstName + ' ' +lastName}</h4>
               <p>{birthDate} years</p>
             </div>
-            <div className="person__icons">
+            <div className="personDetails icons">
               <button href="#"><RiPencilLine/></button>
               <button href="#"><RiDeleteBin2Line/></button>
             </div>

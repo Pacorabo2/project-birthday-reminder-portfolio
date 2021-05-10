@@ -42,6 +42,7 @@ Variables
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
   --max-width: 1170px;
   --fixed-width: 450px;
+  --fixed-width-friends-container: 520px;
   --clr-pink: #f28ab2;
 }
 /*
@@ -144,8 +145,8 @@ main {
 }
 
 .container {
-  width: 90vw;
-  margin: 5rem 0;
+  margin-left: auto;
+  margin-right: auto;
   max-width: var(--fixed-width);
   background: var(--clr-white);
   border-radius: var(--radius);

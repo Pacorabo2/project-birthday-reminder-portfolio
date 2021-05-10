@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import Button from '../Button'
 
 import './style.css'
 
-const Modal = ({showModal, setShowModal, children}) => {
+const Modal = ({showModal, children}) => {
 
   const [closeModal, setCloseModal] = useState(false)
 
