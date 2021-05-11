@@ -6,10 +6,7 @@ import './style.css'
 
 const Create = (props) => {
 
-  console.log(props)
-
   const firebase = useContext(FirebaseContext)
-
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -27,8 +24,6 @@ const Create = (props) => {
     props.closeModal()
   }
 
-  
-
   const onFileChange = async (e) => {
     const file = e.target.files[0]
     console.log(file);
@@ -39,8 +34,6 @@ const Create = (props) => {
     console.log(fileUrl);
   }
   
-  
-
   return (
     <div className="create">
       <h4>Ajoutez anniversaire</h4>

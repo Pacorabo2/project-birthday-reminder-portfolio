@@ -2,7 +2,7 @@ import React from 'react'
 
 import './style.css'
 
-const Modal = ({showModal, children}) => {
+const UploadFriendModal= ({showModal, children}) => {
 
   return (
     showModal && (
@@ -13,4 +13,4 @@ const Modal = ({showModal, children}) => {
   )
 }
 
-export default Modal
+export default UploadFriendModal
