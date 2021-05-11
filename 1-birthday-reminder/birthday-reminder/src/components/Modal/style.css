@@ -5,3 +5,12 @@
   background-color: rgba(0,0,0,0.5);
   justify-content: center;
 }
+
+.close {
+  cursor: pointer;
+  position: relative;
+  left: 98%;
+  top: -15px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}

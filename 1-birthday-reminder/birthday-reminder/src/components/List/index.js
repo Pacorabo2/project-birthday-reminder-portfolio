@@ -2,6 +2,7 @@ import React, { Fragment, useState, useContext, useEffect } from 'react'
 import { FirebaseContext } from '../Firebase'
 import app from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/firestore'
 import Button from '../Button'
 import Logout from '../Logout'
 import Create from '../Create'
@@ -14,10 +15,11 @@ import './style.css'
 const List = props => {
 
   const firebase = useContext(FirebaseContext)
-  
   // Get user from firebase
   const userAuth = firebase.auth.X
-  // tate definition
+
+  const ref = app.firestore().collection('users').doc(userAuth)
+  // State definition
   const [userSession, setUserSession] = useState(null)
   const [userData, setUserData] = useState({})
   const [friends, setFriends] = useState([])
@@ -40,7 +42,17 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  }, [friends])
+  }, []) //friends
+
+  // To delete Friends
+  function deleteFriend(friend) {
+    app
+    .firestore()
+    .collection('users')
+    .doc(userAuth)
+    .collection('friends').doc(friend.id).delete()
+  }
+
 
   // To look if user is connected
   useEffect(() => {
@@ -104,8 +116,8 @@ const List = props => {
               <p>{birthDate} years</p>
             </div>
             <div className="personDetails icons">
-              <button href="#"><RiPencilLine/></button>
-              <button href="#"><RiDeleteBin2Line/></button>
+              <button ><RiPencilLine/></button>
+              <button onClick={() => deleteFriend(friend)}><RiDeleteBin2Line/></button>
             </div>
           </article>
         );

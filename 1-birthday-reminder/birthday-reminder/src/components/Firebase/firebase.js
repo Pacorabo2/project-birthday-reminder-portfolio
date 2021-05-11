@@ -3,6 +3,8 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
 
+console.log(process.env.REACT_APP_FIREBASE_KEY);
+
 const config = {
   apiKey: "AIzaSyB0Ve-ntaidOXZfK7eP5WpD5OUqM_x8FMo",
   authDomain: "birthday-reminder-fdca4.firebaseapp.com",
