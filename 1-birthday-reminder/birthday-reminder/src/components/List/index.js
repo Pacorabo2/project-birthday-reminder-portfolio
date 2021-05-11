@@ -18,12 +18,12 @@ const List = props => {
   // Get user from firebase
   const userAuth = firebase.auth.X
 
-  const ref = app.firestore().collection('users').doc(userAuth)
   // State definition
   const [userSession, setUserSession] = useState(null)
   const [userData, setUserData] = useState({})
   const [friends, setFriends] = useState([])
   const [showModal, setShowModal] = useState(false)
+  const [showUpdateModal, setShowUpdateModal] = useState(false)
 
   
 
@@ -42,7 +42,7 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  }, []) //friends
+  },[])
 
   // To delete Friends
   function deleteFriend(friend) {
@@ -51,6 +51,17 @@ const List = props => {
     .collection('users')
     .doc(userAuth)
     .collection('friends').doc(friend.id).delete()
+  }
+
+  // To upload Friend
+  function uploadFriend(friend){
+    console.log(friend.id);
+    openModal()
+    app
+    .firestore()
+    .collection('users')
+    .doc(userAuth)
+    .collection('friends').doc(friend.id).set({})
   }
 
 
@@ -80,23 +91,30 @@ const List = props => {
   },[userSession])
 
   // To open Modal
-  const openModal = e => {
-    console.log('show');
-    setShowModal(prev => !prev)
-    console.log(showModal);
+  const openModal = () => {
+    setShowModal((prev) => !prev)
   }
 
-  // To open Modal
-  const closeModal = e => {
-    console.log('show');
-    setShowModal(prev => !prev)
-    console.log(showModal);
+  // To close Modal
+  const closeModal = () => {
+    setShowModal((prev) => !prev)
   }
+
+  // To open UploadModal
+  const openUploadModal = () => {
+    setShowUpdateModal((prev) => !prev)
+  }
+
+  // To close UploadModal
+  const closeUploadModal = () => {
+    setShowUpdateModal((prev) => !prev)
+  }
+
     return showModal === true ? (
       <Modal showModal={showModal}  >
         <div className="container">
           <p className="close" onClick={closeModal}>X</p>
-          <Create />
+          <Create closeModal={closeModal}/>
         </div>
       </Modal>
     ) : (
@@ -116,7 +134,7 @@ const List = props => {
               <p>{birthDate} years</p>
             </div>
             <div className="personDetails icons">
-              <button ><RiPencilLine/></button>
+              <button onClick={() => uploadFriend(friend)}><RiPencilLine/></button>
               <button onClick={() => deleteFriend(friend)}><RiDeleteBin2Line/></button>
             </div>
           </article>

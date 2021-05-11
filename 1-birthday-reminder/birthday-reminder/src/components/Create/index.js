@@ -4,7 +4,9 @@ import 'firebase/firestore'
 
 import './style.css'
 
-const Create = () => {
+const Create = (props) => {
+
+  console.log(props)
 
   const firebase = useContext(FirebaseContext)
 
@@ -22,6 +24,7 @@ const Create = () => {
     setLastName('')
     setBirthDate('')
     setProfilePict('')
+    props.closeModal()
   }
 
   
