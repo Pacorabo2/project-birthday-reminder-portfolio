@@ -7,6 +7,7 @@ import Button from '../Button'
 import Logout from '../Logout'
 import Create from '../Create'
 import Modal from '../Modal'
+import UploadFriendModal from '../UploadFriendModal'
 
 import { RiPencilLine } from 'react-icons/ri'
 import { RiDeleteBin2Line } from 'react-icons/ri'
@@ -24,6 +25,7 @@ const List = props => {
   const [friends, setFriends] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [showUpdateModal, setShowUpdateModal] = useState(false)
+  const [friendData, setFriendData] = useState({})
 
   
 
@@ -42,7 +44,7 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  },[])
+  },[friends])
 
   // To delete Friends
   function deleteFriend(friend) {
@@ -56,14 +58,13 @@ const List = props => {
   // To upload Friend
   function uploadFriend(friend){
     console.log(friend.id);
-    openModal()
+    openUploadModal()
     app
     .firestore()
     .collection('users')
     .doc(userAuth)
     .collection('friends').doc(friend.id).set({})
   }
-
 
   // To look if user is connected
   useEffect(() => {
@@ -92,33 +93,66 @@ const List = props => {
 
   // To open Modal
   const openModal = () => {
-    setShowModal((prev) => !prev)
+    setShowModal(true)
   }
 
   // To close Modal
   const closeModal = () => {
-    setShowModal((prev) => !prev)
+    setShowModal(false)
   }
 
-  // To open UploadModal
-  const openUploadModal = () => {
-    setShowUpdateModal((prev) => !prev)
+  // To open UploadModal and get frind to push on state
+  const openUploadModal = (friend) => {
+    console.log(friend);
+    // console.log(`Je suis dans openUploadModal et setShowUpdateModal avant vaut: ${showUpdateModal}`);
+    setShowUpdateModal(true)
+    setFriendData({
+      birthDate: friend.birthDate,
+      fileUrl: friend.fileUrl,
+      firstName: friend.firstName,
+      id: friend.id,
+      lastName: friend.lastName
+    })
+    // console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
+    setTimeout(function() {
+      console.log(friendData);
+    }, 2000)
   }
 
   // To close UploadModal
   const closeUploadModal = () => {
-    setShowUpdateModal((prev) => !prev)
+    console.log(`Je suis dans openUploadModal et setShowUpdateModal avant vaut: ${showUpdateModal}`);
+    setShowUpdateModal(false)
+    console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
   }
 
-    return showModal === true ? (
-      <Modal showModal={showModal}  >
+  if (showModal) {
+
+    return (
+      <Modal showModal={showModal}>
         <div className="container">
           <p className="close" onClick={closeModal}>X</p>
           <Create closeModal={closeModal}/>
         </div>
       </Modal>
-    ) : (
-    <>
+    )
+  } else if (showUpdateModal) {
+    return (
+      // L'idée ici est d'aller récupérer d'ynamiquement les valeurs de chaque friend et
+      // de leur attribuer en value leur valeur. Au changement on récupèrera
+      // la valeur saisie puis l'attribuerons à la méthode upload
+      <UploadFriendModal showUpdateModal={showUpdateModal}>
+        <div className="container">
+          <p className="close" onClick={closeUploadModal}>X</p>
+          {/* <Create closeModal={closeModal}/> */}
+          <input type="text" value={friends.birthDate}/>
+          <label htmlFor="input">{friends.birthDate}</label>
+        </div>
+      </UploadFriendModal>
+    )
+  } else {
+    return (
+      <>
     <Logout userData={userData} />
     <div className="container">
     <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
@@ -134,7 +168,7 @@ const List = props => {
               <p>{birthDate} years</p>
             </div>
             <div className="personDetails icons">
-              <button onClick={() => uploadFriend(friend)}><RiPencilLine/></button>
+              <button onClick={() => openUploadModal(friend)}><RiPencilLine/></button>
               <button onClick={() => deleteFriend(friend)}><RiDeleteBin2Line/></button>
             </div>
           </article>
@@ -150,9 +184,9 @@ const List = props => {
         </Button>
       </div>
     </div>
-    
     </>
-  )
+    )
+  }  
 }
 
 export default List

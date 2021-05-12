@@ -36,7 +36,7 @@ const Create = (props) => {
   
   return (
     <div className="create">
-      <h4>Ajoutez anniversaire</h4>
+      <h4>Ajoutez un anniversaire</h4>
       <div className="form">
         <input 
           type="text"

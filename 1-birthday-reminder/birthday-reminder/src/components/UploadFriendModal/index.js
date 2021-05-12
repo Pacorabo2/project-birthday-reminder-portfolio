@@ -2,11 +2,12 @@ import React from 'react'
 
 import './style.css'
 
-const UploadFriendModal= ({showModal, children}) => {
+const UploadFriendModal= ({showUpdateModal, children}) => {
 
   return (
-    showModal && (
+    showUpdateModal && (
       <div className="modalBackground">
+        <h2>UploadFriendModal</h2>
         {children}
       </div>
     )
