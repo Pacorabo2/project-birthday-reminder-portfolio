@@ -1,8 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import  { FirebaseContext } from '../Firebase'
+import 'firebase/firestore'
 
 import './style.css'
 
 const Update = (props) => {
+
+  const firebase = useContext(FirebaseContext)
   
 
   const [firstName, setFirstName] = useState(props.friendData.firstName)
@@ -27,9 +31,14 @@ const Update = (props) => {
     setBirthDate(e.target.value)
   }
 
-  const profilePictChange = e => {
-    setProfilePict('')
-    setProfilePict(e.target.value)
+  const onFileChange = async (e) => {
+    const file = e.target.files[0]
+    console.log(file);
+    const storageRef = firebase.storage.ref()
+    const fileRef = storageRef.child(file.name)
+    await fileRef.put(file)
+    setFileUrl(await fileRef.getDownloadURL())
+    alert(`image ${fileUrl} téléchargée avec succés`);
   }
   
   return (
@@ -43,17 +52,17 @@ const Update = (props) => {
           type="text"
           placeholder={props.friendData.lastName} // *
           value={lastName}
-          onChange={e => setLastName(e.target.value)}/>
+          onChange={lastNameChange}/>
         <input 
           type="date"
           placeholder={props.friendData.birthDate} // *
           value={birthDate}
-          onChange={e => setBirthDate(e.target.value)}/>
+          onChange={birthDateChange}/>
         <input 
           type="file"
           placeholder="Photo de profil" // *
           value={profilePict}
-          onChange={setProfilePict}/>
+          onChange={onFileChange}/>
           <button
            onClick="#">Ajouter</button> 
       </div>
