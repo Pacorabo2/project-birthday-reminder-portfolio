@@ -3,8 +3,6 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
 
-console.log(process.env.REACT_APP_FIREBASE_KEY);
-
 const config = {
   apiKey: "AIzaSyB0Ve-ntaidOXZfK7eP5WpD5OUqM_x8FMo",
   authDomain: "birthday-reminder-fdca4.firebaseapp.com",
@@ -37,7 +35,6 @@ class Firebase {
   passwordReset = email => this.auth.sendPasswordResetEmail(email)
 
   // Get user id in database
-  // user = uid => this.db.collection("users").doc(`${uid}`).collection('friends').doc('friend')
   user = uid => this.db.doc(`users/${uid}`)
   
   // Add friend
@@ -48,7 +45,7 @@ class Firebase {
     this.db.collection('users').doc(userLogged)
       .collection('friends').doc(document.id).set({ firstName, lastName, birthDate, fileUrl })
 
-      console.log("friend added");
+    console.log("friend added");
   }
 
   // Get all friends
@@ -63,7 +60,6 @@ class Firebase {
       })
     })
   }
-
 }
 
 

@@ -31,7 +31,7 @@ const Create = (props) => {
     const fileRef = storageRef.child(file.name)
     await fileRef.put(file)
     setFileUrl(await fileRef.getDownloadURL())
-    console.log(fileUrl);
+    alert(`image ${fileUrl} téléchargée avec succés`);
   }
   
   return (

@@ -6,6 +6,7 @@ import 'firebase/firestore'
 import Button from '../Button'
 import Logout from '../Logout'
 import Create from '../Create'
+import Update from '../Update'
 import Modal from '../Modal'
 import UploadFriendModal from '../UploadFriendModal'
 
@@ -27,7 +28,6 @@ const List = props => {
   const [showUpdateModal, setShowUpdateModal] = useState(false)
   const [friendData, setFriendData] = useState({})
 
-  
 
   // To get friends from firebase acount
   useEffect(() => {
@@ -44,10 +44,11 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  },[friends])
+  },[]) // friends
 
   // To delete Friends
   function deleteFriend(friend) {
+    
     app
     .firestore()
     .collection('users')
@@ -101,8 +102,16 @@ const List = props => {
     setShowModal(false)
   }
 
+
   // To open UploadModal and get frind to push on state
   const openUploadModal = (friend) => {
+    // Ici j'ai accès à mon objet friend. Pour pouvoir m'en servir ailleur, il faudrait qu'il se troiuve
+    // dans mon state. Pour l'instant ce n'est pas le cas. Pas grave, on va le faire.
+    // On a vu que pour agir sur un state, on avait la méthode setState. étape 1 de la réflexion
+    // J'ai une idée, si je défini un state vide de friend et qu'à la place de faire un console.log
+    // je vienne faire un setstate pour ajouter mon friend{id, firstname, etc} 
+    // On devrait pouvoir se servir de ce state pour le passer à d'autres composants non ?
+
     // Get friend datas on State
     setFriendData({
       birthDate: friend.birthDate,
@@ -115,15 +124,15 @@ const List = props => {
     setShowUpdateModal(true)
     // console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
     setTimeout(function() {
-      console.log(friendData);
+      // console.log(friendData);
     }, 2000)
   }
 
   // To close UploadModal
   const closeUploadModal = () => {
-    console.log(`Je suis dans openUploadModal et setShowUpdateModal avant vaut: ${showUpdateModal}`);
+    // console.log(`Je suis dans openUploadModal et setShowUpdateModal avant vaut: ${showUpdateModal}`);
     setShowUpdateModal(false)
-    console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
+    // console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
   }
 
   if (showModal) {
@@ -144,11 +153,8 @@ const List = props => {
       <UploadFriendModal showUpdateModal={showUpdateModal} friendData={friendData}>
         <div className="container">
           <p className="close" onClick={closeUploadModal}>X</p>
-          <h3 className="modalTitle">{`Modification les informations de ${friendData.firstName}`}</h3>
-          {/* Appeler ici le même formulaire que Create mais ici, ce sera 
-          Update qui indiquera les valeurs des champs. Au changment on modifiera le state du friend <Create closeModal={closeModal}/> */}
-          <input type="text" value={friends.birthDate}/>
-          <label htmlFor="input">{friends.birthDate}</label>
+          <h3 className="modalTitle">{`Modification des informations de ${friendData.firstName}`}</h3>
+          <Update friendData={friendData} />
         </div>
       </UploadFriendModal>
     )
@@ -159,7 +165,17 @@ const List = props => {
     <div className="container">
     <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
       {friends.map((friend) => {
+      // {friends[ami 1{key: clénuméro1,  id: , firstname: , etc}, ami2{key: clénuméro2,}, ami3, etc]
         const { id, firstName, lastName, birthDate, fileUrl } = friend;
+ 
+        // friend.{
+          // id: ex351,
+          // firstname: roger,
+          // lastname: rabit,
+          // url: joliprofildulapin
+          // birthdate: demain
+       // }
+
         return (
           <article key={id} className='person'>
             <div className="personDetails avatar">
