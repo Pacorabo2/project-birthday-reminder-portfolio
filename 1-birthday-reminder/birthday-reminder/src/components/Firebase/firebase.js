@@ -49,13 +49,39 @@ class Firebase {
   }
 
   // Update
-  revealFriend = (firstName, lastName, birthDate, fileUrl, friendId) => {
-    // console.log(`Dans la fonction reveal de firebase ${firstName}`);
-    console.log(`Dans la fonction reveal de firebase  ${firstName}`);
-    console.log(`Dans la fonction reveal de firebase  ${lastName}`);
-    console.log(`Dans la fonction reveal de firebase  ${birthDate}`);
-    console.log(`Dans la fonction reveal de firebase  ${fileUrl}`);
-    console.log(`Dans la fonction reveal de firebase  ${friendId}`);
+  // revealFriend = (firstName, lastName, birthDate, fileUrl, friendId) => {
+
+  //   let userLogged = this.auth.currentUser.uid
+  //   // console.log(`Dans la fonction reveal de firebase ${firstName}`);
+  //   console.log(`Dans la fonction reveal de firebase  ${firstName}`);
+  //   console.log(`Dans la fonction reveal de firebase  ${lastName}`);
+  //   console.log(`Dans la fonction reveal de firebase  ${birthDate}`);
+  //   console.log(`Dans la fonction reveal de firebase  ${fileUrl}`);
+  //   console.log(`Dans la fonction reveal de firebase  ${friendId}`);
+  //   this.db.collection('users').doc(userLogged)
+  //     .collection('friends').doc(friendId)
+  //     .update({'birthdate': birthDate, 
+  //              'fileUrl': fileUrl, 
+  //              'fisrtName': firstName, 
+  //              'lastName': lastName})
+  //     .catch((err) => {
+  //       console.error(err)
+  //     });
+  revealFriend = (updatedFriend) => {
+
+    console.log(updatedFriend.friendId)
+    console.log(updatedFriend)
+
+    let userLogged = this.auth.currentUser.uid
+    
+    this.db.collection('users').doc(userLogged)
+      .collection('friends').doc(updatedFriend.friendId)
+      .set(updatedFriend)
+      .catch((err) => {
+        console.error(err)
+      });
+
+      console.log(`${updatedFriend.firstName} a bien été modifié`);
     
   } 
 

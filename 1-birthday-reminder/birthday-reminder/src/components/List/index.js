@@ -152,7 +152,7 @@ const List = props => {
         <div className="container">
           <p className="close" onClick={closeUploadModal}>X</p>
           <h3 className="modalTitle">{`Modification des informations de ${friendData.firstName}`}</h3>
-          <Update friendData={friendData} />
+          <Update friendData={friendData} closeModal={closeModal}/>
         </div>
       </UploadFriendModal>
     )

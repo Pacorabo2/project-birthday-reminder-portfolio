@@ -6,6 +6,8 @@ import './style.css'
 
 const Update = (props) => {
 
+  console.log(props);
+
   const firebase = useContext(FirebaseContext)
 
   const [firstName, setFirstName] = useState(props.friendData.firstName)
@@ -28,8 +30,9 @@ const Update = (props) => {
   }
 
   const updateFriend = () => { 
-    console.log(friendId);
-    firebase.revealFriend(firstName, lastName, birthDate, fileUrl, friendId)
+    // firebase.revealFriend(firstName, lastName, birthDate, fileUrl, friendId)
+    firebase.revealFriend({birthdate: birthDate, fileUrl: fileUrl, fisrtName: firstName, lastName: lastName, friendId})
+    props.closeModal()
   }
   
   return (
