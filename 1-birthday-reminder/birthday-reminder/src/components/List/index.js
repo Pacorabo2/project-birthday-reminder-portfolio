@@ -147,9 +147,7 @@ const List = props => {
     )
   } else if (showUpdateModal) {
     return (
-      // L'idée ici est d'aller récupérer d'ynamiquement les valeurs de chaque friend et
-      // de leur attribuer en value leur valeur. Au changement on récupèrera
-      // la valeur saisie puis l'attribuerons à la méthode upload
+    
       <UploadFriendModal showUpdateModal={showUpdateModal} friendData={friendData}>
         <div className="container">
           <p className="close" onClick={closeUploadModal}>X</p>
@@ -165,16 +163,8 @@ const List = props => {
     <div className="container">
     <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
       {friends.map((friend) => {
-      // {friends[ami 1{key: clénuméro1,  id: , firstname: , etc}, ami2{key: clénuméro2,}, ami3, etc]
         const { id, firstName, lastName, birthDate, fileUrl } = friend;
- 
-        // friend.{
-          // id: ex351,
-          // firstname: roger,
-          // lastname: rabit,
-          // url: joliprofildulapin
-          // birthdate: demain
-       // }
+
 
         return (
           <article key={id} className='person'>

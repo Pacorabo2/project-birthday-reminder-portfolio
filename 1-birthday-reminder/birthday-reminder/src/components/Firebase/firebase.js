@@ -48,6 +48,17 @@ class Firebase {
     console.log("friend added");
   }
 
+  // Update
+  revealFriend = (firstName, lastName, birthDate, fileUrl, friendId) => {
+    // console.log(`Dans la fonction reveal de firebase ${firstName}`);
+    console.log(`Dans la fonction reveal de firebase  ${firstName}`);
+    console.log(`Dans la fonction reveal de firebase  ${lastName}`);
+    console.log(`Dans la fonction reveal de firebase  ${birthDate}`);
+    console.log(`Dans la fonction reveal de firebase  ${fileUrl}`);
+    console.log(`Dans la fonction reveal de firebase  ${friendId}`);
+    
+  } 
+
   // Get all friends
   getAllFriends = () => {
 

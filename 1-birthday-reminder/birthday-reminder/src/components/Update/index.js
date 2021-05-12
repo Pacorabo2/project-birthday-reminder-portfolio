@@ -7,29 +7,15 @@ import './style.css'
 const Update = (props) => {
 
   const firebase = useContext(FirebaseContext)
-  
 
   const [firstName, setFirstName] = useState(props.friendData.firstName)
   const [lastName, setLastName] = useState(props.friendData.lastName)
   const [birthDate, setBirthDate] = useState(props.friendData.birthDate)
-  const [profilePict , setProfilePict] = useState('')
-  const [fileUrl , setFileUrl] = useState('')
+  const [friendId, setFriendId] = useState(props.friendData.id)
+  const [profilePict , setProfilePict] = useState('') // 
+  const [fileUrl , setFileUrl] = useState(props.friendData.fileUrl)
 
-
-  const firstNameChange = (e) => {
-    setFirstName('')
-    setFirstName(e.target.value)
-  }
-
-  const lastNameChange = (e) => {
-    setLastName('')
-    setLastName(e.target.value)
-  }
-
-  const birthDateChange = e => {
-    setBirthDate(null)
-    setBirthDate(e.target.value)
-  }
+  console.log(props.friendData.id)
 
   const onFileChange = async (e) => {
     const file = e.target.files[0]
@@ -40,6 +26,11 @@ const Update = (props) => {
     setFileUrl(await fileRef.getDownloadURL())
     alert(`image ${fileUrl} téléchargée avec succés`);
   }
+
+  const updateFriend = () => { 
+    console.log(friendId);
+    firebase.revealFriend(firstName, lastName, birthDate, fileUrl, friendId)
+  }
   
   return (
     <div className="form">
@@ -47,24 +38,23 @@ const Update = (props) => {
           type="text"
           placeholder={props.friendData.firstName} // *
           value={firstName}
-          onChange={firstNameChange}/>
+          onChange={e => setFirstName(e.target.value)}/>
         <input 
           type="text"
           placeholder={props.friendData.lastName} // *
           value={lastName}
-          onChange={lastNameChange}/>
+          onChange={e => setLastName(e.target.value)}/>
         <input 
           type="date"
           placeholder={props.friendData.birthDate} // *
           value={birthDate}
-          onChange={birthDateChange}/>
+          onChange={e => setBirthDate(e.target.value)}/>
         <input 
           type="file"
-          placeholder="Photo de profil" // *
+          placeholder={props.friendData.fileUrl} // *
           value={profilePict}
           onChange={onFileChange}/>
-          <button
-           onClick="#">Ajouter</button> 
+          <button onClick={updateFriend}>Ajouter</button> 
       </div>
   )
 }
