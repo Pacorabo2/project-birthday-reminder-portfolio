@@ -103,9 +103,7 @@ const List = props => {
 
   // To open UploadModal and get frind to push on state
   const openUploadModal = (friend) => {
-    console.log(friend);
-    // console.log(`Je suis dans openUploadModal et setShowUpdateModal avant vaut: ${showUpdateModal}`);
-    setShowUpdateModal(true)
+    // Get friend datas on State
     setFriendData({
       birthDate: friend.birthDate,
       fileUrl: friend.fileUrl,
@@ -113,6 +111,8 @@ const List = props => {
       id: friend.id,
       lastName: friend.lastName
     })
+    // console.log(`Je suis dans openUploadModal et setShowUpdateModal avant vaut: ${showUpdateModal}`);
+    setShowUpdateModal(true)
     // console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
     setTimeout(function() {
       console.log(friendData);
@@ -141,10 +141,12 @@ const List = props => {
       // L'idée ici est d'aller récupérer d'ynamiquement les valeurs de chaque friend et
       // de leur attribuer en value leur valeur. Au changement on récupèrera
       // la valeur saisie puis l'attribuerons à la méthode upload
-      <UploadFriendModal showUpdateModal={showUpdateModal}>
+      <UploadFriendModal showUpdateModal={showUpdateModal} friendData={friendData}>
         <div className="container">
           <p className="close" onClick={closeUploadModal}>X</p>
-          {/* <Create closeModal={closeModal}/> */}
+          <h3 className="modalTitle">{`Modification les informations de ${friendData.firstName}`}</h3>
+          {/* Appeler ici le même formulaire que Create mais ici, ce sera 
+          Update qui indiquera les valeurs des champs. Au changment on modifiera le state du friend <Create closeModal={closeModal}/> */}
           <input type="text" value={friends.birthDate}/>
           <label htmlFor="input">{friends.birthDate}</label>
         </div>
