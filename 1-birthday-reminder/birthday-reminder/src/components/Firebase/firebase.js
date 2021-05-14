@@ -43,7 +43,11 @@ class Firebase {
     let userLogged = this.auth.currentUser.uid
 
     this.db.collection('users').doc(userLogged)
-      .collection('friends').doc(document.id).set({ firstName, lastName, birthDate, fileUrl })
+      .collection('friends').doc(document.id)
+      .set({ firstName, lastName, birthDate, fileUrl })
+      .catch((err) => {
+        console.error(err)
+      });
 
     console.log("friend added");
   }
