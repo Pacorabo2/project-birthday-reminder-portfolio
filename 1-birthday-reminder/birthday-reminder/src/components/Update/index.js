@@ -14,7 +14,7 @@ const Update = (props) => {
   const [lastName, setLastName] = useState(props.friendData.lastName)
   const [birthDate, setBirthDate] = useState(props.friendData.birthDate)
   const [friendId, setFriendId] = useState(props.friendData.id)
-  const [profilePict , setProfilePict] = useState('') // 
+  const [profilePict , setProfilePict] = useState('') 
   const [fileUrl , setFileUrl] = useState(props.friendData.fileUrl)
 
   console.log(props.friendData.id)
@@ -30,33 +30,44 @@ const Update = (props) => {
   }
 
   const updateFriend = () => { 
-    // firebase.revealFriend(firstName, lastName, birthDate, fileUrl, friendId)
-    firebase.revealFriend({birthdate: birthDate, fileUrl: fileUrl, fisrtName: firstName, lastName: lastName, friendId})
-    props.closeModal()
+    firebase.revealFriend(firstName, lastName, birthDate, fileUrl, friendId)
+    setFirstName('')
+    setLastName('')
+    setBirthDate('')
+    setProfilePict('')
+    setFriendId('')
+    props.closeUploadModal()
+    alert(`${firstName} a bien été modifié`)
   }
   
   return (
     <div className="form">
         <input 
           type="text"
-          placeholder={props.friendData.firstName} // *
+          required="required"
+          placeholder={props.friendData.firstName} 
           value={firstName}
           onChange={e => setFirstName(e.target.value)}/>
         <input 
           type="text"
+          required="required"
           placeholder={props.friendData.lastName} // *
           value={lastName}
           onChange={e => setLastName(e.target.value)}/>
         <input 
           type="date"
+          required="required"
           placeholder={props.friendData.birthDate} // *
           value={birthDate}
           onChange={e => setBirthDate(e.target.value)}/>
         <input 
           type="file"
+          required="required"
           placeholder={props.friendData.fileUrl} // *
           value={profilePict}
-          onChange={onFileChange}/>
+          // onChange={onFileChange} // A tester avec une autre valeur pour qu'il affiche le fichier choisi
+          onChange={onFileChange} // A tester avec une autre valeur pour qu'il affiche le fichier choisi
+          /> 
           <button onClick={updateFriend}>Ajouter</button> 
       </div>
   )
