@@ -29,6 +29,10 @@ const Update = (props) => {
     alert(`image ${fileUrl} téléchargée avec succés`);
   }
 
+  // Get today date
+  let today = new Date().toISOString().split('T')[0]
+
+
   const updateFriend = () => { 
     firebase.revealFriend(firstName, lastName, birthDate, fileUrl, friendId)
     setFirstName('')
@@ -59,6 +63,7 @@ const Update = (props) => {
           required="required"
           placeholder={props.friendData.birthDate} // *
           value={birthDate}
+          max={today}
           onChange={e => setBirthDate(e.target.value)}/>
         <input 
           type="file"
