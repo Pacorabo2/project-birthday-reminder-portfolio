@@ -44,22 +44,26 @@ const Create = (props) => {
         <input 
           type="text"
           placeholder="firstName"
+          required="required"
           value={firstName}
           onChange={e => setFirstName(e.target.value)}/>
         <input 
           type="text"
           placeholder="lastName"
+          required="required"
           value={lastName}
           onChange={e => setLastName(e.target.value)}/>
         <input 
           type="date"
           placeholder="Date d'anniversaire"
+          required="required"
           value={birthDate}
           max={today}
           onChange={e => setBirthDate(e.target.value)}/>
         <input 
           type="file"
           placeholder="Photo de profil"
+          required="required"
           value={profilePict}
           onChange={onFileChange}/>
           <button
