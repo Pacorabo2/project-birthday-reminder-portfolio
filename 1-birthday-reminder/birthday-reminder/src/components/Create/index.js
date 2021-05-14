@@ -14,7 +14,10 @@ const Create = (props) => {
   const [profilePict , setProfilePict] = useState('')
   const [fileUrl , setFileUrl] = useState(null)
 
-  // ---------------- Fonction d'origine sans await ------------
+  // Get today date
+  let today = new Date().toISOString().split('T')[0]
+
+
   const createFriend = () => {
     firebase.addFriend(firstName, lastName, birthDate, fileUrl)
     setFirstName('')
@@ -52,6 +55,7 @@ const Create = (props) => {
           type="date"
           placeholder="Date d'anniversaire"
           value={birthDate}
+          max={today}
           onChange={e => setBirthDate(e.target.value)}/>
         <input 
           type="file"
