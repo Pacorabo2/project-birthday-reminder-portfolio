@@ -27,6 +27,7 @@ const List = props => {
   const [showModal, setShowModal] = useState(false)
   const [showUpdateModal, setShowUpdateModal] = useState(false)
   const [friendData, setFriendData] = useState({})
+  const [dayDate, setDayDate] = useState(null)
 
 
   // To get friends from firebase acount
@@ -44,7 +45,66 @@ const List = props => {
 
        setFriends(newFriends)
      })
-  },[]) // friends
+  },[userAuth])
+
+  // Ici, on récupère la liste des friends
+  // console.log(friends)
+
+  // To countdown birtday
+  const birthdayCountDown = () => {
+    
+    friends.map((friend) => {
+      // Définissons l'année courante
+      let currentYear = new Date().getFullYear()
+      // L'année N+1
+      let nextYear = currentYear + 1
+      // Récupérer le mois en cours
+      const dateNow = new Date();
+      const currentMonth = (dateNow.getMonth()) + 1
+      // On défini la date d'anniversaire
+      let birthDay = new Date(friend.birthDate)
+      console.log(`l'anniversaire de ${friend.firstName} est le ${birthDay}`);
+      // On en récupère le mois
+      const birtDayMonth = (birthDay.getMonth()) + 1
+      console.log(`le mois d'anniversaire de  ${friend.firstName} est le ${birtDayMonth}`);
+      const  currentYearCountDown = () => {
+          birthDay.setFullYear(currentYear)
+          // On récupère le Time du jour
+          const timeToday = dateNow.getTime()
+          // On récupère le time de l'anniversaire
+          const currentYearBirthTime = birthDay.getTime() 
+          // On calcule la différence de Time entre l'anniversaire à venir 
+          // et le Time de maintenant
+          const distCurrentYear = currentYearBirthTime - timeToday
+          // On convertit le résultat qui est en milisecondes en nombre de jours
+          const dDayCurrentYear = Math.floor(distCurrentYear / (1000 * 60 * 60 * 24)) + 1
+          console.log(`il reste ${dDayCurrentYear} jours avant l'anniversaire`)
+      }
+      const nextYearCountDown = () => {
+          birthDay.setFullYear(nextYear)
+          // On récupère le Time du jour
+          const timeToday = dateNow.getTime()
+          // On récupère le time de l'anniversaire
+          const currentYearBirthTime = birthDay.getTime() 
+          // On calcule la différence de Time entre l'anniversaire à venir 
+          // et le Time de maintenant
+          const distCurrentYear = currentYearBirthTime - timeToday
+          // On convertit le résultat qui est en milisecondes en nombre de jours
+          const dDayCurrentYear = Math.floor(distCurrentYear / (1000 * 60 * 60 * 24)) + 1
+          console.log(`il reste ${dDayCurrentYear} jours avant l'anniversaire`)
+      }
+      // Si le mois d'anniversaire est plus grand que le mois en cours
+      if (birtDayMonth > currentMonth) {
+          currentYearCountDown()
+      } else {
+          nextYearCountDown()
+      }
+    })
+  }
+
+  birthdayCountDown()
+
+  // birthdayCountDown()
 
   // To delete Friends
   function deleteFriend(friend) {
@@ -54,17 +114,6 @@ const List = props => {
     .collection('users')
     .doc(userAuth)
     .collection('friends').doc(friend.id).delete()
-  }
-
-  // To upload Friend
-  function uploadFriend(friend){
-    console.log(friend.id);
-    openUploadModal()
-    app
-    .firestore()
-    .collection('users')
-    .doc(userAuth)
-    .collection('friends').doc(friend.id).set({})
   }
 
   // To look if user is connected
@@ -90,7 +139,7 @@ const List = props => {
     return () => {
       listener()
     }
-  },[userSession])
+  },[userSession, firebase, firebase.history, props.history])
 
   // To open Modal
   const openModal = () => {
@@ -102,16 +151,8 @@ const List = props => {
     setShowModal(false)
   }
 
-
-  // To open UploadModal and get frind to push on state
+  // To open UploadModal and get friend to push on state
   const openUploadModal = (friend) => {
-    // Ici j'ai accès à mon objet friend. Pour pouvoir m'en servir ailleur, il faudrait qu'il se troiuve
-    // dans mon state. Pour l'instant ce n'est pas le cas. Pas grave, on va le faire.
-    // On a vu que pour agir sur un state, on avait la méthode setState. étape 1 de la réflexion
-    // J'ai une idée, si je défini un state vide de friend et qu'à la place de faire un console.log
-    // je vienne faire un setstate pour ajouter mon friend{id, firstname, etc} 
-    // On devrait pouvoir se servir de ce state pour le passer à d'autres composants non ?
-
     // Get friend datas on State
     setFriendData({
       birthDate: friend.birthDate,
@@ -134,6 +175,10 @@ const List = props => {
     setShowUpdateModal(false)
     // console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
   }
+
+  
+
+  // console.log(friendData);
 
   if (showModal) {
 
@@ -164,7 +209,6 @@ const List = props => {
     <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
       {friends.map((friend) => {
         const { id, firstName, lastName, birthDate, fileUrl } = friend;
-
 
         return (
           <article key={id} className='person'>

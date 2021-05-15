@@ -64,9 +64,7 @@ class Firebase {
       });
 
       console.log(`${firstName} a bien été modifié`);
-    
   }
-
 } 
 
 
