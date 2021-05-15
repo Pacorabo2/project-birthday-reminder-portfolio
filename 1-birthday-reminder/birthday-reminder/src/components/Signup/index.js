@@ -79,7 +79,12 @@ const Signup = (props) => {
             <input onChange={handleChange} value={confirmPassword} type="password" id="confirmPassword" autoComplete="off" required />
             <label htmlFor="password">Confirmez le mot de Passe</label>
           </div>
-           <Button />
+          <div className="footer">
+            <Button className="btnSubmit"
+            buttonStyle="btn--primary--outline"
+            buttonSize="btn--medium"
+            >Ajouter</Button>
+          </div>
         </div>
       </form>
       <div className="linkContainer">

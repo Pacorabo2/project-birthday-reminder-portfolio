@@ -60,7 +60,12 @@ const Login = (props) => {
             <input onChange={handleChange} type="text" id="password" value={password} autoComplete="off" required/>
             <label htmlFor="password">Mot de passe</label>
           </div>
-          <Button />
+          <div className="footer">
+            <Button className="btnSubmit"
+            buttonStyle="btn--primary--outline"
+            buttonSize="btn--medium"
+            >Ajouter</Button>
+          </div>
         </div>
       </form>
       <div className="linkContainer">
