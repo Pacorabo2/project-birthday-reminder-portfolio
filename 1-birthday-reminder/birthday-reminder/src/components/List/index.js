@@ -154,7 +154,7 @@ const List = props => {
 
         //To set the present date
         let today = new Date()
-        console.log(today.getMonth());
+        // console.log(today.getMonth());
 
         // To get the present year
         let currentYear = new Date().getFullYear()
@@ -176,21 +176,10 @@ const List = props => {
         // console.log(`Année d'anniversaire ${firstName} : ${yearOfBirthday}`)
 
 
-        // eslint-disable-next-line no-unused-expressions
-        today.getMonth() >= monthOfBirthday && today.getDate() > dayOfBirthday ? (
-          birthDay.setFullYear(currentYear + 1),
-          console.log(`%c Dans le if current year + 1 et ${firstName} est né le ${birthDate}`, 'color: red'),
-          console.log(`%c Dans le if 'current' vaut ${currentYear}`, 'color: red'),
-          console.log(`%c Dans le if 'birthDay' vaut ${birthDay}`, 'color: red')
-        ) : (
-          birthDay.setFullYear(currentYear),
-          console.log(`%c Dans le else current year et ${firstName} est né le ${birthDate}`, 'color: green'),
-          console.log(`%c Dans le else 'current' vaut ${currentYear}`, 'color: green'),
-          console.log(`%c Dans le else 'birthDay' vau ${birthDay}`, 'color: green')
-        )
-          
-        
-          
+        today.getMonth() >= monthOfBirthday && today.getDate() > dayOfBirthday ? 
+        birthDay.setFullYear(currentYear + 1) 
+        : 
+        birthDay.setFullYear(currentYear)
         
           
         // To calculate the result in ms and convertinfg into days
@@ -210,7 +199,7 @@ const List = props => {
             <div className="personDetails infos">
               <h4>{firstName + ' ' +lastName}</h4>
               <p>Né(e) le {displayedResult}</p>
-              <p>Dans {daysRemaining} jours</p>
+              <p>Anniversaire dans {daysRemaining} jours</p>
             </div>
             <div className="personDetails icons">
               <button onClick={() => openUploadModal(friend)}><RiPencilLine/></button>
@@ -225,7 +214,7 @@ const List = props => {
           buttonSize="btn--medium"
           onClick={openModal}
           >
-            Ajouter un Anniversaire
+          Ajouter un Anniversaire
         </Button>
       </div>
     </div>

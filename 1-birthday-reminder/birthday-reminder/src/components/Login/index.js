@@ -64,7 +64,7 @@ const Login = (props) => {
             <Button className="btnSubmit"
             buttonStyle="btn--primary--outline"
             buttonSize="btn--medium"
-            >Ajouter</Button>
+            >Se connecter</Button>
           </div>
         </div>
       </form>

@@ -83,7 +83,7 @@ const Signup = (props) => {
             <Button className="btnSubmit"
             buttonStyle="btn--primary--outline"
             buttonSize="btn--medium"
-            >Ajouter</Button>
+            >S'inscrire</Button>
           </div>
         </div>
       </form>
