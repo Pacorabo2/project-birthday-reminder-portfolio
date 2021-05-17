@@ -46,40 +46,7 @@ const List = props => {
      })
   },[userAuth])
 
-  // Ici, on récupère la liste des friends
-  // console.log(friends)
-
-  /*
-  // To countdown birtday
-  const birthdayCountDown = () => {
-    // One day Time in ms
-    let oneDay = 1000 * 60 * 60 * 24
-    // console.log(oneDay)
-      
-    //To set the present date
-    let today = new Date()
-    console.log(today.getTime())
-      
-    // Defined birthday
-    let birthDay = new Date(today.getFullYear(), 4, 10)
-    console.log(birthDay.getTime())
-      
-    // To calculate next year's birthday if passed already
-    if (today.getMonth() === 4 && today.getDate() > 10)
-      birthDay.setFullYear(birthDay.getFullYear() + 1)
-    // console.log(birthDay)
-      
-    // To calculate the result in ms and convertinfg into days
-    let result = Math.round(birthDay.getTime() - today.getTime()) / (oneDay)
-    console.log(result)
-      
-    // To remove the decimals from th result
-    let daysRemaining = result.toFixed(0)
-    console.log(daysRemaining) 
-  }
-
-  birthdayCountDown()
-  */
+  
 
   // To delete Friends
   function deleteFriend(friend) {
@@ -151,9 +118,6 @@ const List = props => {
     // console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
   }
 
-  
-
-  // console.log(friendData);
 
   if (showModal) {
 
@@ -187,27 +151,18 @@ const List = props => {
 
         // One day Time in ms
         let oneDay = 1000 * 60 * 60 * 24
-        // console.log(oneDay)
 
         //To set the present date
         let today = new Date()
-        
-        // To set the curent month
-        let currentmonth = today.getMonth()
-        // console.log(currentmonth)
 
         // To get the present year
         let currentYear = new Date().getFullYear()
-        // console.log(`Au tour de ${firstName} et nous sommes en ${currentYear}`);
 
         // Defined birthday
-        // let birthDay = new Date(today.getFullYear(), 4, 10)
-        let birthDay = new Date(birthDate) // new Date()
-        // console.log(`Au tour de ${firstName} et nous sommes le voici le Timecode de son anniv : ${birthDay.getTime()}`)
+        let birthDay = new Date(birthDate) 
 
         // To define the day of the borthday
         let dayOfBirthday = birthDay.getDay()
-        // console.log(dayOfBirthday)
 
         // To define the month of birthday
         let monthOfBirthday = birthDay.getMonth()
@@ -215,26 +170,19 @@ const List = props => {
         // To calculate next year's birthday if passed already
         if (today.getMonth() === monthOfBirthday && today.getDate() > dayOfBirthday) {
           birthDay.setFullYear(currentYear + 1)
-          console.log(`Au tour de ${firstName} et l'année du compte à rebour sera ${birthDay}`)
         } else {
           birthDay.setFullYear(currentYear)
-          console.log(`Au tour de ${firstName} et l'année du compte à rebour sera ${birthDay}`)
         }
           
-        
         // To calculate the result in ms and convertinfg into days
         let result = (Math.round(birthDay.getTime() - today.getTime()) / (oneDay)) + 1
-        console.log(result)
-
+        
         // to format the date
         let displayedResult = birthDay.getDay() + "/" + birthDay.getMonth() + "/" + birthDay.getFullYear()
-        console.log(displayedResult)
-
+        
         // To remove the decimals from th result
         let daysRemaining = result.toFixed(0)
-        console.log(`Il reste ${daysRemaining} jours avant l'anniversaire de ${firstName}`)
-
-
+        
         return (
           <article key={id} className='person'>
             <div className="personDetails avatar">
