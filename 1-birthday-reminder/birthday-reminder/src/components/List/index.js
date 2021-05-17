@@ -103,19 +103,14 @@ const List = props => {
       id: friend.id,
       lastName: friend.lastName
     })
-    // console.log(`Je suis dans openUploadModal et setShowUpdateModal avant vaut: ${showUpdateModal}`);
     setShowUpdateModal(true)
-    // console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
     setTimeout(function() {
-      // console.log(friendData);
     }, 2000)
   }
 
   // To close UploadModal
   const closeUploadModal = () => {
-    // console.log(`Je suis dans openUploadModal et setShowUpdateModal avant vaut: ${showUpdateModal}`);
     setShowUpdateModal(false)
-    // console.log(`Je suis dans openUploadModal et setShowUpdateModal après vaut: ${showUpdateModal}`);
   }
 
 
@@ -154,28 +149,23 @@ const List = props => {
 
         //To set the present date
         let today = new Date()
-        // console.log(today.getMonth());
 
         // To get the present year
         let currentYear = new Date().getFullYear()
 
         // Defined birthday
         let birthDay = new Date(birthDate) 
-        // console.log(`%c Date d'anniversaire de ${firstName} : ${birthDay}`, 'color: green')
 
         // To define the day of the borthday
         let dayOfBirthday = birthDay.getDate()
-        // console.log(`Jour d'anniversaire ${firstName} : ${dayOfBirthday}`)
 
         // To define the month of birthday
         let monthOfBirthday = birthDay.getMonth()
-        // console.log(`Mois d'anniversaire ${firstName} : ${monthOfBirthday}`)
 
         // To define the year of birthday
         let yearOfBirthday = birthDay.getFullYear()
-        // console.log(`Année d'anniversaire ${firstName} : ${yearOfBirthday}`)
 
-
+        // Add one year if birthday is < today 
         today.getMonth() >= monthOfBirthday && today.getDate() > dayOfBirthday ? 
         birthDay.setFullYear(currentYear + 1) 
         : 
