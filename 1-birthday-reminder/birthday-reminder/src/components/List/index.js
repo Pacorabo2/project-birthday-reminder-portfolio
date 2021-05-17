@@ -27,7 +27,6 @@ const List = props => {
   const [showModal, setShowModal] = useState(false)
   const [showUpdateModal, setShowUpdateModal] = useState(false)
   const [friendData, setFriendData] = useState({})
-  const [dayDate, setDayDate] = useState(null)
 
 
   // To get friends from firebase acount
@@ -50,61 +49,37 @@ const List = props => {
   // Ici, on récupère la liste des friends
   // console.log(friends)
 
+  /*
   // To countdown birtday
   const birthdayCountDown = () => {
-    
-    friends.map((friend) => {
-      // Définissons l'année courante
-      let currentYear = new Date().getFullYear()
-      // L'année N+1
-      let nextYear = currentYear + 1
-      // Récupérer le mois en cours
-      const dateNow = new Date();
-      const currentMonth = (dateNow.getMonth()) + 1
-      // On défini la date d'anniversaire
-      let birthDay = new Date(friend.birthDate)
-      console.log(`l'anniversaire de ${friend.firstName} est le ${birthDay}`);
-      // On en récupère le mois
-      const birtDayMonth = (birthDay.getMonth()) + 1
-      console.log(`le mois d'anniversaire de  ${friend.firstName} est le ${birtDayMonth}`);
-      const  currentYearCountDown = () => {
-          birthDay.setFullYear(currentYear)
-          // On récupère le Time du jour
-          const timeToday = dateNow.getTime()
-          // On récupère le time de l'anniversaire
-          const currentYearBirthTime = birthDay.getTime() 
-          // On calcule la différence de Time entre l'anniversaire à venir 
-          // et le Time de maintenant
-          const distCurrentYear = currentYearBirthTime - timeToday
-          // On convertit le résultat qui est en milisecondes en nombre de jours
-          const dDayCurrentYear = Math.floor(distCurrentYear / (1000 * 60 * 60 * 24)) + 1
-          console.log(`il reste ${dDayCurrentYear} jours avant l'anniversaire`)
-      }
-      const nextYearCountDown = () => {
-          birthDay.setFullYear(nextYear)
-          // On récupère le Time du jour
-          const timeToday = dateNow.getTime()
-          // On récupère le time de l'anniversaire
-          const currentYearBirthTime = birthDay.getTime() 
-          // On calcule la différence de Time entre l'anniversaire à venir 
-          // et le Time de maintenant
-          const distCurrentYear = currentYearBirthTime - timeToday
-          // On convertit le résultat qui est en milisecondes en nombre de jours
-          const dDayCurrentYear = Math.floor(distCurrentYear / (1000 * 60 * 60 * 24)) + 1
-          console.log(`il reste ${dDayCurrentYear} jours avant l'anniversaire`)
-      }
-      // Si le mois d'anniversaire est plus grand que le mois en cours
-      if (birtDayMonth > currentMonth) {
-          currentYearCountDown()
-      } else {
-          nextYearCountDown()
-      }
-    })
+    // One day Time in ms
+    let oneDay = 1000 * 60 * 60 * 24
+    // console.log(oneDay)
+      
+    //To set the present date
+    let today = new Date()
+    console.log(today.getTime())
+      
+    // Defined birthday
+    let birthDay = new Date(today.getFullYear(), 4, 10)
+    console.log(birthDay.getTime())
+      
+    // To calculate next year's birthday if passed already
+    if (today.getMonth() === 4 && today.getDate() > 10)
+      birthDay.setFullYear(birthDay.getFullYear() + 1)
+    // console.log(birthDay)
+      
+    // To calculate the result in ms and convertinfg into days
+    let result = Math.round(birthDay.getTime() - today.getTime()) / (oneDay)
+    console.log(result)
+      
+    // To remove the decimals from th result
+    let daysRemaining = result.toFixed(0)
+    console.log(daysRemaining) 
   }
 
   birthdayCountDown()
-
-  // birthdayCountDown()
+  */
 
   // To delete Friends
   function deleteFriend(friend) {
@@ -210,6 +185,56 @@ const List = props => {
       {friends.map((friend) => {
         const { id, firstName, lastName, birthDate, fileUrl } = friend;
 
+        // One day Time in ms
+        let oneDay = 1000 * 60 * 60 * 24
+        // console.log(oneDay)
+
+        //To set the present date
+        let today = new Date()
+        
+        // To set the curent month
+        let currentmonth = today.getMonth()
+        // console.log(currentmonth)
+
+        // To get the present year
+        let currentYear = new Date().getFullYear()
+        // console.log(`Au tour de ${firstName} et nous sommes en ${currentYear}`);
+
+        // Defined birthday
+        // let birthDay = new Date(today.getFullYear(), 4, 10)
+        let birthDay = new Date(birthDate) // new Date()
+        // console.log(`Au tour de ${firstName} et nous sommes le voici le Timecode de son anniv : ${birthDay.getTime()}`)
+
+        // To define the day of the borthday
+        let dayOfBirthday = birthDay.getDay()
+        // console.log(dayOfBirthday)
+
+        // To define the month of birthday
+        let monthOfBirthday = birthDay.getMonth()
+
+        // To calculate next year's birthday if passed already
+        if (today.getMonth() === monthOfBirthday && today.getDate() > dayOfBirthday) {
+          birthDay.setFullYear(currentYear + 1)
+          console.log(`Au tour de ${firstName} et l'année du compte à rebour sera ${birthDay}`)
+        } else {
+          birthDay.setFullYear(currentYear)
+          console.log(`Au tour de ${firstName} et l'année du compte à rebour sera ${birthDay}`)
+        }
+          
+        
+        // To calculate the result in ms and convertinfg into days
+        let result = (Math.round(birthDay.getTime() - today.getTime()) / (oneDay)) + 1
+        console.log(result)
+
+        // to format the date
+        let displayedResult = birthDay.getDay() + "/" + birthDay.getMonth() + "/" + birthDay.getFullYear()
+        console.log(displayedResult)
+
+        // To remove the decimals from th result
+        let daysRemaining = result.toFixed(0)
+        console.log(`Il reste ${daysRemaining} jours avant l'anniversaire de ${firstName}`)
+
+
         return (
           <article key={id} className='person'>
             <div className="personDetails avatar">
@@ -217,7 +242,8 @@ const List = props => {
             </div>
             <div className="personDetails infos">
               <h4>{firstName + ' ' +lastName}</h4>
-              <p>{birthDate} years</p>
+              <p>Né(e) le {displayedResult}</p>
+              <p>Dans {daysRemaining} jours</p>
             </div>
             <div className="personDetails icons">
               <button onClick={() => openUploadModal(friend)}><RiPencilLine/></button>
