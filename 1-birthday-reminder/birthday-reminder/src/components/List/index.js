@@ -154,31 +154,50 @@ const List = props => {
 
         //To set the present date
         let today = new Date()
+        console.log(today.getMonth());
 
         // To get the present year
         let currentYear = new Date().getFullYear()
 
         // Defined birthday
         let birthDay = new Date(birthDate) 
+        // console.log(`%c Date d'anniversaire de ${firstName} : ${birthDay}`, 'color: green')
 
         // To define the day of the borthday
-        let dayOfBirthday = birthDay.getDay()
+        let dayOfBirthday = birthDay.getDate()
+        // console.log(`Jour d'anniversaire ${firstName} : ${dayOfBirthday}`)
 
         // To define the month of birthday
         let monthOfBirthday = birthDay.getMonth()
+        // console.log(`Mois d'anniversaire ${firstName} : ${monthOfBirthday}`)
 
-        // To calculate next year's birthday if passed already
-        if (today.getMonth() === monthOfBirthday && today.getDate() > dayOfBirthday) {
-          birthDay.setFullYear(currentYear + 1)
-        } else {
-          birthDay.setFullYear(currentYear)
-        }
+        // To define the year of birthday
+        let yearOfBirthday = birthDay.getFullYear()
+        // console.log(`Année d'anniversaire ${firstName} : ${yearOfBirthday}`)
+
+
+        // eslint-disable-next-line no-unused-expressions
+        today.getMonth() >= monthOfBirthday && today.getDate() > dayOfBirthday ? (
+          birthDay.setFullYear(currentYear + 1),
+          console.log(`%c Dans le if current year + 1 et ${firstName} est né le ${birthDate}`, 'color: red'),
+          console.log(`%c Dans le if 'current' vaut ${currentYear}`, 'color: red'),
+          console.log(`%c Dans le if 'birthDay' vaut ${birthDay}`, 'color: red')
+        ) : (
+          birthDay.setFullYear(currentYear),
+          console.log(`%c Dans le else current year et ${firstName} est né le ${birthDate}`, 'color: green'),
+          console.log(`%c Dans le else 'current' vaut ${currentYear}`, 'color: green'),
+          console.log(`%c Dans le else 'birthDay' vau ${birthDay}`, 'color: green')
+        )
+          
+        
+          
+        
           
         // To calculate the result in ms and convertinfg into days
         let result = (Math.round(birthDay.getTime() - today.getTime()) / (oneDay)) + 1
         
         // to format the date
-        let displayedResult = birthDay.getDay() + "/" + birthDay.getMonth() + "/" + birthDay.getFullYear()
+        let displayedResult = dayOfBirthday + "/" + (monthOfBirthday + 1) + "/" + yearOfBirthday
         
         // To remove the decimals from th result
         let daysRemaining = result.toFixed(0)
