@@ -29,7 +29,6 @@ const Create = (props) => {
 
   const onFileChange = async (e) => {
     const file = e.target.files[0]
-    console.log(file);
     const storageRef = firebase.storage.ref()
     const fileRef = storageRef.child(file.name)
     await fileRef.put(file)

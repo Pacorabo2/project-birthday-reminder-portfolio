@@ -6,8 +6,6 @@ import './style.css'
 
 const Update = (props) => {
 
-  console.log(props);
-
   const firebase = useContext(FirebaseContext)
 
   const [firstName, setFirstName] = useState(props.friendData.firstName)
@@ -17,11 +15,8 @@ const Update = (props) => {
   const [profilePict , setProfilePict] = useState('') 
   const [fileUrl , setFileUrl] = useState(props.friendData.fileUrl)
 
-  console.log(props.friendData.id)
-
   const onFileChange = async (e) => {
     const file = e.target.files[0]
-    console.log(file);
     const storageRef = firebase.storage.ref()
     const fileRef = storageRef.child(file.name)
     await fileRef.put(file)
@@ -70,7 +65,6 @@ const Update = (props) => {
           required="required"
           placeholder={props.friendData.fileUrl} // *
           value={profilePict}
-          // onChange={onFileChange} // A tester avec une autre valeur pour qu'il affiche le fichier choisi
           onChange={onFileChange} // A tester avec une autre valeur pour qu'il affiche le fichier choisi
           /> 
           <button onClick={updateFriend}>Ajouter</button> 

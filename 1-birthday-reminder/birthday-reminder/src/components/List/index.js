@@ -12,6 +12,7 @@ import UploadFriendModal from '../UploadFriendModal'
 
 import { RiPencilLine } from 'react-icons/ri'
 import { RiDeleteBin2Line } from 'react-icons/ri'
+import ReactTooltip from 'react-tooltip'
 import './style.css'
 
 const List = props => {
@@ -138,7 +139,7 @@ const List = props => {
   } else {
     return (
       <>
-    <Logout userData={userData} />
+    <Logout userData={userData} data-tip="Déconnexion"/>
     <div className="container">
     <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
       {friends.map((friend) => {
@@ -192,8 +193,8 @@ const List = props => {
               <p>Anniversaire dans {daysRemaining} jours</p>
             </div>
             <div className="personDetails icons">
-              <button onClick={() => openUploadModal(friend)}><RiPencilLine/></button>
-              <button onClick={() => deleteFriend(friend)}><RiDeleteBin2Line/></button>
+              <button onClick={() => openUploadModal(friend)} ><RiPencilLine data-tip="Modifier"/><ReactTooltip/></button>
+              <button onClick={() => deleteFriend(friend)} ><RiDeleteBin2Line data-tip="Supprimer"/></button>
             </div>
           </article>
         );
