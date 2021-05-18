@@ -36,6 +36,24 @@ const Create = (props) => {
     setFileUrl(await fileRef.getDownloadURL())
     alert(`image ${fileUrl} téléchargée avec succés`);
   }
+
+  // To show Button only if all inputs are implemented
+  const btn = firstName === '' || lastName === '' || fileUrl === null ? 
+  (<Button 
+    disabled="true"
+    type="button" 
+    buttonStyle="btn--disabled--outline" 
+    buttonSize="btn--medium"
+  >
+    Ajouter
+  </Button>) 
+  : (<Button onClick={createFriend}
+    type="button" 
+    buttonStyle="btn--primary--outline" 
+    buttonSize="btn--medium"
+  >
+    Ajouter
+  </Button>)
   
   return (
     <div className="create">
@@ -66,13 +84,7 @@ const Create = (props) => {
           required="required"
           value={profilePict}
           onChange={onFileChange}/>
-          <Button
-           onClick={createFriend}
-           type="button" 
-           buttonStyle="btn--primary--outline" 
-           buttonSize="btn--medium">
-             Ajouter
-          </Button>
+          {btn}
       </div>
     </div>
   )

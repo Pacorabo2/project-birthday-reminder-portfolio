@@ -15,6 +15,7 @@ const Update = (props) => {
   const [friendId, setFriendId] = useState(props.friendData.id)
   const [profilePict , setProfilePict] = useState('') 
   const [fileUrl , setFileUrl] = useState(props.friendData.fileUrl)
+  const [showButton, setShowButton] = useState(false)
 
   const onFileChange = async (e) => {
     const file = e.target.files[0]
@@ -39,6 +40,24 @@ const Update = (props) => {
     props.closeUploadModal()
     alert(`${firstName} a bien été modifié`)
   }
+
+  // To show Button only if all inputs are implemented
+  const btn = firstName === '' || lastName === '' || fileUrl === null ? 
+  (<Button 
+    disabled="true"
+    type="button" 
+    buttonStyle="btn--disabled--outline" 
+    buttonSize="btn--medium"
+  >
+    Ajouter
+  </Button>) 
+  : (<Button onClick={updateFriend}
+    type="button" 
+    buttonStyle="btn--primary--outline" 
+    buttonSize="btn--medium"
+  >
+    Ajouter
+  </Button>)
   
   return (
     <div className="form">
@@ -68,14 +87,7 @@ const Update = (props) => {
           value={profilePict}
           onChange={onFileChange} // A tester avec une autre valeur pour qu'il affiche le fichier choisi
           /> 
-          <Button 
-            onClick={updateFriend}
-            type="button" 
-            buttonStyle="btn--primary--outline" 
-            buttonSize="btn--medium"
-           >
-             Ajouter
-          </Button> 
+          {btn} 
       </div>
   )
 }

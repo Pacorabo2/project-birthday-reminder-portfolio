@@ -11,7 +11,8 @@ const STYLES = [
   "btn--primary--outline",
   "btn--warning--outline",
   "btn--danger--outline",
-  "btn--success--outline"
+  "btn--success--outline",
+  "btn--disabled--outline",
 ];
 
 // Sizes of the button

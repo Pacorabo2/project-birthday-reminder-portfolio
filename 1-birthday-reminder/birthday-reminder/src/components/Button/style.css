@@ -70,6 +70,12 @@
   border: 2px solid var(--success);
 }
 
+.btn--disabled--outline {
+  background-color: transparent;
+  color: var(--clr-grey-4);
+  border: 2px solid var(--clr-grey-4);
+}
+
 /* --------- Button Sizes ------------ */
 
 .btn--small {
