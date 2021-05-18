@@ -3,6 +3,7 @@ import  { FirebaseContext } from '../Firebase'
 import Button from '../Button'
 import 'firebase/firestore'
 
+import Swal from 'sweetalert2'
 import './style.css'
 
 const Update = (props) => {
@@ -23,7 +24,10 @@ const Update = (props) => {
     const fileRef = storageRef.child(file.name)
     await fileRef.put(file)
     setFileUrl(await fileRef.getDownloadURL())
-    alert(`image ${fileUrl} téléchargée avec succés`);
+    Swal.fire(
+      'Bravo',
+      `image ${file.name} téléchargée avec succés`,
+      'success');
   }
 
   // Get today date
@@ -38,7 +42,10 @@ const Update = (props) => {
     setProfilePict('')
     setFriendId('')
     props.closeUploadModal()
-    alert(`${firstName} a bien été modifié`)
+    Swal.fire(
+      `${firstName} a bien été modifié`,
+      'success'
+      )
   }
 
   // To show Button only if all inputs are implemented

@@ -12,7 +12,6 @@ const Create = (props) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [birthDate, setBirthDate] = useState('')
-  const [profilePict , setProfilePict] = useState('')
   const [fileUrl , setFileUrl] = useState(null)
 
   // Get today date
@@ -24,7 +23,6 @@ const Create = (props) => {
     setFirstName('')
     setLastName('')
     setBirthDate('')
-    setProfilePict('')
     props.closeModal()
   }
 
@@ -59,18 +57,22 @@ const Create = (props) => {
     <div className="create">
       <h4>Ajoutez un anniversaire</h4>
       <div className="form">
-        <input 
-          type="text"
-          placeholder="firstName"
-          required="required"
-          value={firstName}
-          onChange={e => setFirstName(e.target.value)}/>
-        <input 
-          type="text"
-          placeholder="lastName"
-          required="required"
-          value={lastName}
-          onChange={e => setLastName(e.target.value)}/>
+        <div className="inputBox">
+          <input 
+            type="text"
+            required="required"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}/>
+          <label htmlFor="firstName">Prénom</label>
+        </div>
+        <div className="inputBox">
+          <input 
+            type="text"
+            required="required"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}/>
+          <label htmlFor="lastName">Nom</label>
+        </div>
         <input 
           type="date"
           placeholder="Date d'anniversaire"
@@ -82,7 +84,6 @@ const Create = (props) => {
           type="file"
           placeholder="Photo de profil"
           required="required"
-          value={profilePict}
           onChange={onFileChange}/>
           {btn}
       </div>
