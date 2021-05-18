@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect, useContext }from 'react'
 import { FirebaseContext } from '../Firebase'
-import ReactTooltip from 'react-tooltip'
 import'./style.css'
 
 const Logout = (props) => {

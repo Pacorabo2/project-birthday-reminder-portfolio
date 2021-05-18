@@ -127,14 +127,13 @@ const List = props => {
     )
   } else if (showUpdateModal) {
     return (
-    
-      <UploadFriendModal showUpdateModal={showUpdateModal} friendData={friendData}>
+      <Modal showUpdateModal={showUpdateModal} friendData={friendData}>
         <div className="container">
           <p className="close" onClick={closeUploadModal}>X</p>
           <h3 className="modalTitle">{`Modification des informations de ${friendData.firstName}`}</h3>
           <Update friendData={friendData} closeUploadModal={closeUploadModal}/>
         </div>
-      </UploadFriendModal>
+      </Modal>
     )
   } else {
     return (

@@ -2,15 +2,21 @@ import React from 'react'
 
 import './style.css'
 
-const Modal = ({showModal, children}) => {
+const Modal = ({showModal, showUpdateModal, children}) => {
 
-  return (
-    showModal && (
-      <div className="modalBackground">
-        {children}
-      </div>
-    )
-  )
+    if (showModal) {
+      return (
+        <div className="modalBackground">
+          {children}
+        </div>
+      )
+    } else if (showUpdateModal) {
+      return (
+        <div className="modalBackground">
+          {children}
+        </div>
+      )
+    }
 }
 
 export default Modal
