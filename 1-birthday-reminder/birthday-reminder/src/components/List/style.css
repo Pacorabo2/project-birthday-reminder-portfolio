@@ -24,6 +24,12 @@
   height: 80px;
 }
 
+.personDetails  p:last-child {
+  font-weight: 400;
+  color: var(--clr-primary-7);
+}
+
+
 .avatar {
   flex-basis: 15%;
   display: flex;
@@ -104,11 +110,3 @@
   }
 }
 /* END LOADER */
-
-/* .close {
-  cursor: pointer;
-  position: relative;
-  left: 90%;
-  font-weight: bold;
-  font-size: 1.2rem;
-} */

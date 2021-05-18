@@ -212,7 +212,7 @@ const List = props => {
             <div className="personDetails infos">
               <h4>{firstName + ' ' +lastName}</h4>
               <p>Né(e) le {displayedResult}</p>
-              <p>Anniversaire dans {daysRemaining} jours</p>
+              <p>{`Anniversaire dans ${daysRemaining} jour${plur}`}</p>
             </div>
             <div className="personDetails icons">
               <button onClick={() => openUploadModal(friend)} ><RiPencilLine data-tip="Modifier"/><ReactTooltip/></button>
