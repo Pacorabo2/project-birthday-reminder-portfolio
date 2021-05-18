@@ -26,7 +26,8 @@ const Button = ({
   type,
   onClick,
   buttonStyle,
-  buttonSize
+  buttonSize, 
+  disabled
 }) => {
   // Fallback in case no style is stipulated
   const checkButtonStyle = STYLES.includes(buttonStyle)
@@ -39,6 +40,7 @@ const Button = ({
       className={`btn ${checkButtonStyle} ${checkButtonSize}`}
       onClick={onClick}
       type={type}
+      disabled={disabled}
     >
       {children}
     </button>

@@ -203,6 +203,7 @@ const List = props => {
           buttonStyle="btn--primary--outline"
           buttonSize="btn--medium"
           onClick={openModal}
+          // disabled={true}
           >
           Ajouter un Anniversaire
         </Button>
