@@ -13,6 +13,7 @@ import UploadFriendModal from '../UploadFriendModal'
 import { RiPencilLine } from 'react-icons/ri'
 import { RiDeleteBin2Line } from 'react-icons/ri'
 import ReactTooltip from 'react-tooltip'
+import Swal from 'sweetalert2'
 import './style.css'
 
 const List = props => {
@@ -51,12 +52,31 @@ const List = props => {
 
   // To delete Friends
   function deleteFriend(friend) {
-    
-    app
-    .firestore()
-    .collection('users')
-    .doc(userAuth)
-    .collection('friends').doc(friend.id).delete()
+
+    // Alert
+    Swal.fire({
+      title: `Vous allez supprimer ${friend.firstName} !`,
+      text: `${friend.firstName} n'apparaîtra plus dans votre liste d'amis`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#1aa179',
+      cancelButtonColor: '#bb2525',
+      confirmButtonText: 'Oui !',
+      cancelButtonText: 'Non !',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Supprimé!',
+          `${friend.firstName} a bien été supprimé`,
+          'success'
+        )
+        app
+          .firestore()
+          .collection('users')
+          .doc(userAuth)
+          .collection('friends').doc(friend.id).delete()
+      }
+    })
   }
 
   // To look if user is connected
