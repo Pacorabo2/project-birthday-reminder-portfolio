@@ -6,7 +6,7 @@ import 'firebase/firestore'
 import Swal from 'sweetalert2'
 import './style.css'
 
-const Update = (props) => {
+const Uploadd = (props) => {
 
   const firebase = useContext(FirebaseContext)
 
@@ -95,4 +95,4 @@ const Update = (props) => {
   )
 }
 
-export default Update
+export default Uploadd

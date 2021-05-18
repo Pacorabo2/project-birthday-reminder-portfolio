@@ -6,9 +6,8 @@ import 'firebase/firestore'
 import Button from '../Button'
 import Logout from '../Logout'
 import Create from '../Create'
-import Update from '../Update'
+import Uploadd from '../Uploadd'
 import Modal from '../Modal'
-import UploadFriendModal from '../UploadFriendModal'
 
 import { RiPencilLine } from 'react-icons/ri'
 import { RiDeleteBin2Line } from 'react-icons/ri'
@@ -154,7 +153,7 @@ const List = props => {
         <div className="container">
           <p className="close" onClick={closeUploadModal}>X</p>
           <h3 className="modalTitle">{`Modification des informations de ${friendData.firstName}`}</h3>
-          <Update friendData={friendData} closeUploadModal={closeUploadModal}/>
+          <Uploadd friendData={friendData} closeUploadModal={closeUploadModal}/>
         </div>
       </Modal>
     )
