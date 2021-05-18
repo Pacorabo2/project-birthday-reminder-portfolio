@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import  { FirebaseContext } from '../Firebase'
+import Button from '../Button'
 import 'firebase/firestore'
 
 import './style.css'
@@ -65,8 +66,13 @@ const Create = (props) => {
           required="required"
           value={profilePict}
           onChange={onFileChange}/>
-          <button
-           onClick={createFriend}>Ajouter</button>
+          <Button
+           onClick={createFriend}
+           type="button" 
+           buttonStyle="btn--primary--outline" 
+           buttonSize="btn--medium">
+             Ajouter
+          </Button>
       </div>
     </div>
   )

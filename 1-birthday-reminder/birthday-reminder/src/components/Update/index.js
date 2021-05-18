@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react'
 import  { FirebaseContext } from '../Firebase'
+import Button from '../Button'
 import 'firebase/firestore'
 
 import './style.css'
@@ -67,7 +68,14 @@ const Update = (props) => {
           value={profilePict}
           onChange={onFileChange} // A tester avec une autre valeur pour qu'il affiche le fichier choisi
           /> 
-          <button onClick={updateFriend}>Ajouter</button> 
+          <Button 
+            onClick={updateFriend}
+            type="button" 
+            buttonStyle="btn--primary--outline" 
+            buttonSize="btn--medium"
+           >
+             Ajouter
+          </Button> 
       </div>
   )
 }
