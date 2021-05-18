@@ -14,9 +14,7 @@ const Update = (props) => {
   const [lastName, setLastName] = useState(props.friendData.lastName)
   const [birthDate, setBirthDate] = useState(props.friendData.birthDate)
   const [friendId, setFriendId] = useState(props.friendData.id)
-  const [profilePict , setProfilePict] = useState('') 
   const [fileUrl , setFileUrl] = useState(props.friendData.fileUrl)
-  const [showButton, setShowButton] = useState(false)
 
   const onFileChange = async (e) => {
     const file = e.target.files[0]
@@ -39,7 +37,6 @@ const Update = (props) => {
     setFirstName('')
     setLastName('')
     setBirthDate('')
-    setProfilePict('')
     setFriendId('')
     props.closeUploadModal()
     Swal.fire(

@@ -3,6 +3,7 @@ import  { FirebaseContext } from '../Firebase'
 import Button from '../Button'
 import 'firebase/firestore'
 
+import Swal from 'sweetalert2'
 import './style.css'
 
 const Create = (props) => {
@@ -24,6 +25,10 @@ const Create = (props) => {
     setLastName('')
     setBirthDate('')
     props.closeModal()
+    Swal.fire(
+      `${firstName} a bien été créé(e)`,
+      'success'
+      )
   }
 
   const onFileChange = async (e) => {
@@ -32,7 +37,10 @@ const Create = (props) => {
     const fileRef = storageRef.child(file.name)
     await fileRef.put(file)
     setFileUrl(await fileRef.getDownloadURL())
-    alert(`image ${file.name} téléchargée avec succés`);
+    Swal.fire(
+      'Bravo',
+      `image ${file.name} téléchargée avec succés`,
+      'success');
   }
 
   // To show Button only if all inputs are implemented
