@@ -48,7 +48,7 @@ const Uploadd = (props) => {
   // To show Button only if all inputs are implemented
   const btn = firstName === '' || lastName === '' || fileUrl === null ? 
   (<Button 
-    disabled="true"
+    disabled={true}
     type="button" 
     buttonStyle="btn--disabled--outline" 
     buttonSize="btn--medium"
