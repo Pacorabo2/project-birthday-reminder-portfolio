@@ -91,8 +91,7 @@ const Update = (props) => {
           type="file"
           required="required"
           placeholder={props.friendData.fileUrl} // *
-          value={profilePict}
-          onChange={onFileChange} // A tester avec une autre valeur pour qu'il affiche le fichier choisi
+          onChange={onFileChange} 
           /> 
           {btn} 
       </div>

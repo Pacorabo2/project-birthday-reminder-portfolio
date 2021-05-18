@@ -32,7 +32,7 @@ const Create = (props) => {
     const fileRef = storageRef.child(file.name)
     await fileRef.put(file)
     setFileUrl(await fileRef.getDownloadURL())
-    alert(`image ${fileUrl} téléchargée avec succés`);
+    alert(`image ${file.name} téléchargée avec succés`);
   }
 
   // To show Button only if all inputs are implemented
@@ -73,19 +73,19 @@ const Create = (props) => {
             onChange={e => setLastName(e.target.value)}/>
           <label htmlFor="lastName">Nom</label>
         </div>
-        <input 
-          type="date"
-          placeholder="Date d'anniversaire"
-          required="required"
-          value={birthDate}
-          max={today}
-          onChange={e => setBirthDate(e.target.value)}/>
-        <input 
-          type="file"
-          placeholder="Photo de profil"
-          required="required"
-          onChange={onFileChange}/>
-          {btn}
+          <input 
+            type="date"
+            placeholder="Date d'anniversaire"
+            required="required"
+            value={birthDate}
+            max={today}
+            onChange={e => setBirthDate(e.target.value)}/>
+          <input 
+            type="file"
+            placeholder="Photo de profil"
+            required="required"
+            onChange={onFileChange}/>
+            {btn}
       </div>
     </div>
   )
