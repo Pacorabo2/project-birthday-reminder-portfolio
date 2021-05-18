@@ -74,9 +74,9 @@ input:checked+.slider:before {
 .pseudoContainer:first-child {
   margin-top: auto;
   margin-bottom: auto;
-  color: white;
+  color: var(--clr-grey-9);
   margin-right: 2em;
   font-size: 1.7rem;
-  font-weight: 600;
+  font-weight: bold;
 }
 /* END LOGOUT SWITCH */

@@ -22,7 +22,7 @@ const Logout = (props) => {
 
   return (
     <div className="logoutContainer">
-      <p className="pseudoContainer">Bienvenue {props.userData.pseudo} !</p>
+      <p className="pseudoContainer">Bienvenue {props.userData.pseudo}</p>
       <p className="pseudoContainer">Déconnexion</p>
       <label className="switch">
         <input 
