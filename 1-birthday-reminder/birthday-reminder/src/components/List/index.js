@@ -134,6 +134,9 @@ const List = props => {
     setShowUpdateModal(false)
   }
 
+  // To put an 's' if many friends
+  const plur = friends.length > 1 ? "s" : ""
+
 
   if (showModal) {
 
@@ -160,7 +163,7 @@ const List = props => {
       <>
     <Logout userData={userData} data-tip="Déconnexion"/>
     <div className="container">
-    <h3>{`Vous avez ${friends.length} amis enregistrés`}</h3>
+    <h3>{`Vous avez ${friends.length} ami${plur} enregistré${plur}`}</h3>
       {friends.map((friend) => {
         const { id, firstName, lastName, birthDate, fileUrl } = friend;
 
