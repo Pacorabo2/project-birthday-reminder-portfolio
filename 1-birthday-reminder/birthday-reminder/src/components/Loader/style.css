@@ -11,6 +11,7 @@
 
 .loaderText p{
   text-align: center;
+  font-weight: bold;
   color: var(--clr-red-dark);
 }
 

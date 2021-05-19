@@ -46,7 +46,7 @@ const Create = (props) => {
       'Bravo',
       `image ${file.name} téléchargée avec succés`,
       'success');
-      setLoader(false)
+    setLoader(false)
   }
 
   // To show Loader untill fileUrl is not null

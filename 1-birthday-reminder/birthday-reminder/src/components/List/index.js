@@ -188,7 +188,7 @@ const List = props => {
         let yearOfBirthday = birthDay.getFullYear()
 
         // Add one year if birthday is < today 
-        today.getMonth() >= monthOfBirthday && today.getDate() > dayOfBirthday ? 
+        today.getMonth() >= monthOfBirthday && (today.getDate() + 1) > dayOfBirthday ? 
         birthDay.setFullYear(currentYear + 1) 
         : 
         birthDay.setFullYear(currentYear)

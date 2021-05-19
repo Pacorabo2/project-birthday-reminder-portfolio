@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import  { FirebaseContext } from '../Firebase'
 import Button from '../Button'
+import Loader from '../Loader'
 import 'firebase/firestore'
 
 import Swal from 'sweetalert2'
@@ -15,8 +16,10 @@ const Uploadd = (props) => {
   const [birthDate, setBirthDate] = useState(props.friendData.birthDate)
   const [friendId, setFriendId] = useState(props.friendData.id)
   const [fileUrl , setFileUrl] = useState(props.friendData.fileUrl)
+  const [loader , setLoader] = useState(false)
 
   const onFileChange = async (e) => {
+    setLoader(true)
     const file = e.target.files[0]
     const storageRef = firebase.storage.ref()
     const fileRef = storageRef.child(file.name)
@@ -26,7 +29,11 @@ const Uploadd = (props) => {
       'Bravo',
       `image ${file.name} téléchargée avec succés`,
       'success');
+      setLoader(false)
   }
+
+  // To show Loader untill fileUrl is not null
+  const showLoader = loader ? <Loader loadingMsg={"Chargement de la photo, veuillez patienter..."} /> : ""
 
   // Get today date
   let today = new Date().toISOString().split('T')[0]
@@ -65,6 +72,7 @@ const Uploadd = (props) => {
   
   return (
     <div className="form">
+      {showLoader}
         <input 
           type="text"
           required="required"
