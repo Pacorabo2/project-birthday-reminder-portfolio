@@ -80,3 +80,24 @@ input:checked+.slider:before {
   font-weight: bold;
 }
 /* END LOGOUT SWITCH */
+
+/* Media Queries */ 
+
+@media (max-width: 620px) {
+
+  .logoutContainer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 460px) {
+
+  .logoutContainer {
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .logoutContainer p{
+    text-align: center;
+  }
+}

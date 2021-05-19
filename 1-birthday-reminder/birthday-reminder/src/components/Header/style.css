@@ -10,3 +10,9 @@
   color: var(--primary);
 }
 
+@media (max-width: 500px) {
+  .banner-container h1{
+    text-align: center;
+  }
+}
+
