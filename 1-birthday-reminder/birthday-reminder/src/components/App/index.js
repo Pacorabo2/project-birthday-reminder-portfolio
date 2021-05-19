@@ -25,7 +25,7 @@ function App() {
         <Route path="/login" component={Login}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/forgetpassword" component={ForgetPassword}/>
-        <Route component={ErrorPage}/>
+        <Route path="*" component={ErrorPage}/>
       </Switch>
       
       <Footer/>

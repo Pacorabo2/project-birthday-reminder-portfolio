@@ -3,3 +3,8 @@
   padding-top: 4em;
   height: 70vh;
 }
+
+.error p {
+  font-weight: 600;
+  margin-top: 1.5em;
+}
