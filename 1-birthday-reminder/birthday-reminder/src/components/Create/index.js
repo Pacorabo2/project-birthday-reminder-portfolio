@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import  { FirebaseContext } from '../Firebase'
 import Button from '../Button'
+import Loader from '../Loader'
 import 'firebase/firestore'
 
 import Swal from 'sweetalert2'
@@ -14,6 +15,7 @@ const Create = (props) => {
   const [lastName, setLastName] = useState('')
   const [birthDate, setBirthDate] = useState('')
   const [fileUrl , setFileUrl] = useState(null)
+  const [loader , setLoader] = useState(false)
 
   // Get today date
   let today = new Date().toISOString().split('T')[0]
@@ -31,7 +33,10 @@ const Create = (props) => {
       )
   }
 
+  
+
   const onFileChange = async (e) => {
+    setLoader(true)
     const file = e.target.files[0]
     const storageRef = firebase.storage.ref()
     const fileRef = storageRef.child(file.name)
@@ -41,7 +46,11 @@ const Create = (props) => {
       'Bravo',
       `image ${file.name} téléchargée avec succés`,
       'success');
+      setLoader(false)
   }
+
+  // To show Loader untill fileUrl is not null
+  const showLoader = loader ? <Loader loadingMsg={"Chargement de la photo, veuillez patienter..."} /> : ""
 
   // To show Button only if all inputs are implemented
   const btn = firstName === '' || lastName === '' || fileUrl === null ? 
@@ -59,11 +68,15 @@ const Create = (props) => {
     buttonSize="btn--medium"
   >
     Ajouter
-  </Button>)
+  </Button>
+  )
+
+  
   
   return (
     <div className="create">
       <h4>Ajoutez un anniversaire</h4>
+      {showLoader}
       <div className="form">
         <div className="inputBox">
           <input 
