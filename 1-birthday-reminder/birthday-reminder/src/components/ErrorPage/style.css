@@ -13,10 +13,10 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  box-shadow: var(--dark-shadow);
 }
 
 .error p {
   font-weight: 600;
   margin-top: 1em;
-  /* margin-bottom: 1em; */
 }
